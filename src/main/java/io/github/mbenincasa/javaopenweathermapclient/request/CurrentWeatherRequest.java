@@ -19,8 +19,16 @@ public class CurrentWeatherRequest {
         return new Builder(lat, lon, this.apiKey);
     }
 
+    public Builder cityName(String cityName, String stateCode, String countryCode) {
+        return new Builder(cityName, stateCode, countryCode, this.apiKey);
+    }
+
     public Builder cityId(Integer cityId) {
         return new Builder(cityId, this.apiKey);
+    }
+
+    public Builder zipCode(String zipCode, String countryName) {
+        return new Builder(zipCode, countryName, this.apiKey);
     }
 
     public static class Builder {
@@ -34,10 +42,31 @@ public class CurrentWeatherRequest {
             query.put("lon", lon);
         }
 
+        private Builder(String cityName, String stateCode, String countryCode, String apiKey) {
+            this.query = new HashMap<>();
+            query.put("appid", apiKey);
+            query.put("q",
+                    (stateCode == null || stateCode.isEmpty())
+                            ? ((countryCode == null || countryCode.isEmpty())
+                                    ? cityName
+                                    : cityName + "," + countryCode)
+                            : cityName + "," + stateCode + "," + countryCode
+            );
+        }
+
         private Builder(Integer cityId, String apiKey) {
             this.query = new HashMap<>();
             query.put("appid", apiKey);
             query.put("id", cityId);
+        }
+
+        private Builder(String zipCode, String countryCode, String apiKey) {
+            this.query = new HashMap<>();
+            query.put("appid", apiKey);
+            query.put("zip",
+                    (countryCode == null || countryCode.isEmpty())
+                            ? zipCode
+                            : zipCode + "," + countryCode);
         }
 
         public Builder units(String unit) {
