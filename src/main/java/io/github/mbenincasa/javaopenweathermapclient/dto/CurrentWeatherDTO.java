@@ -12,6 +12,8 @@ public class CurrentWeatherDTO {
     private Main main;
     private Integer visibility;
     private Wind wind;
+    private Rain rain;
+    private Snow snow;
     private Clouds clouds;
     private Integer dt;
     private Sys sys;
@@ -23,13 +25,15 @@ public class CurrentWeatherDTO {
     public CurrentWeatherDTO() {
     }
 
-    public CurrentWeatherDTO(Coord coord, List<Weather> weather, String base, Main main, Integer visibility, Wind wind, Clouds clouds, Integer dt, Sys sys, Integer timezone, Integer id, String name, Integer cod) {
+    public CurrentWeatherDTO(Coord coord, List<Weather> weather, String base, Main main, Integer visibility, Wind wind, Rain rain, Snow snow, Clouds clouds, Integer dt, Sys sys, Integer timezone, Integer id, String name, Integer cod) {
         this.coord = coord;
         this.weather = weather;
         this.base = base;
         this.main = main;
         this.visibility = visibility;
         this.wind = wind;
+        this.rain = rain;
+        this.snow = snow;
         this.clouds = clouds;
         this.dt = dt;
         this.sys = sys;
@@ -85,6 +89,22 @@ public class CurrentWeatherDTO {
 
     public void setWind(Wind wind) {
         this.wind = wind;
+    }
+
+    public Rain getRain() {
+        return rain;
+    }
+
+    public void setRain(Rain rain) {
+        this.rain = rain;
+    }
+
+    public Snow getSnow() {
+        return snow;
+    }
+
+    public void setSnow(Snow snow) {
+        this.snow = snow;
     }
 
     public Clouds getClouds() {
@@ -152,6 +172,8 @@ public class CurrentWeatherDTO {
                 ", main=" + main +
                 ", visibility=" + visibility +
                 ", wind=" + wind +
+                ", rain=" + rain +
+                ", snow=" + snow +
                 ", clouds=" + clouds +
                 ", dt=" + dt +
                 ", sys=" + sys +

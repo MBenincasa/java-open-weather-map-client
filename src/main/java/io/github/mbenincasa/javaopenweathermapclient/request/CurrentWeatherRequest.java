@@ -19,6 +19,10 @@ public class CurrentWeatherRequest {
         return new Builder(lat, lon, this.apiKey);
     }
 
+    public Builder cityId(Integer cityId) {
+        return new Builder(cityId, this.apiKey);
+    }
+
     public static class Builder {
 
         private final Map<String, Object> query;
@@ -28,6 +32,12 @@ public class CurrentWeatherRequest {
             query.put("appid", apiKey);
             query.put("lat", lat);
             query.put("lon", lon);
+        }
+
+        private Builder(Integer cityId, String apiKey) {
+            this.query = new HashMap<>();
+            query.put("appid", apiKey);
+            query.put("id", cityId);
         }
 
         public Builder units(String unit) {
