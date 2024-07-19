@@ -9,6 +9,8 @@ Java 17 or above.
 
 ## Dependencies
 - io.github.mbenincasa:java-rest-client:jar:0.3.0
+- org.junit.jupiter:junit-jupiter:jar:5.10.3
+- org.junit.platform:junit-platform-suite-engine:jar:1.10.3
 
 ## Contributing
 We welcome contributions from the community to improve this library. If you encounter any bugs, have feature requests, or want to contribute code, please open an issue or submit a pull request on GitHub.
