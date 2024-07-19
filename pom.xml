@@ -20,5 +20,19 @@
             <artifactId>java-rest-client</artifactId>
             <version>0.3.0</version>
         </dependency>
+
+        <!-- Test -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>5.10.3</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-suite-engine</artifactId>
+            <version>1.10.3</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 </project>
