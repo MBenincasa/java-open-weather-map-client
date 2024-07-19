@@ -1,11 +1,11 @@
 package io.github.mbenincasa.javaopenweathermapclient.dto;
 
-import io.github.mbenincasa.javaopenweathermapclient.dto.fiveDayWeatherForecast.City;
-import io.github.mbenincasa.javaopenweathermapclient.dto.fiveDayWeatherForecast.ForecastList;
+import io.github.mbenincasa.javaopenweathermapclient.dto.weatherForecast.City;
+import io.github.mbenincasa.javaopenweathermapclient.dto.weatherForecast.ForecastList;
 
 import java.util.List;
 
-public class FiveDayWeatherForecastDTO {
+public class WeatherForecastDTO {
 
     private String cod;
     private Integer message;
@@ -13,10 +13,10 @@ public class FiveDayWeatherForecastDTO {
     private List<ForecastList> list;
     private City city;
 
-    public FiveDayWeatherForecastDTO() {
+    public WeatherForecastDTO() {
     }
 
-    public FiveDayWeatherForecastDTO(String cod, Integer message, Integer cnt, List<ForecastList> list, City city) {
+    public WeatherForecastDTO(String cod, Integer message, Integer cnt, List<ForecastList> list, City city) {
         this.cod = cod;
         this.message = message;
         this.cnt = cnt;
@@ -66,7 +66,7 @@ public class FiveDayWeatherForecastDTO {
 
     @Override
     public String toString() {
-        return "FiveDayWeatherForecastDTO{" +
+        return "WeatherForecastDTO{" +
                 "cod='" + cod + '\'' +
                 ", message=" + message +
                 ", cnt=" + cnt +

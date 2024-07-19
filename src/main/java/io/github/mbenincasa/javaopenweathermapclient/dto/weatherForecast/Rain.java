@@ -1,16 +1,16 @@
-package io.github.mbenincasa.javaopenweathermapclient.dto.fiveDayWeatherForecast;
+package io.github.mbenincasa.javaopenweathermapclient.dto.weatherForecast;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Snow {
+public class Rain {
 
     @JsonProperty("3h")
     private Double ThreeH;
 
-    public Snow() {
+    public Rain() {
     }
 
-    public Snow(Double threeH) {
+    public Rain(Double threeH) {
         ThreeH = threeH;
     }
 
@@ -24,7 +24,7 @@ public class Snow {
 
     @Override
     public String toString() {
-        return "Snow{" +
+        return "Rain{" +
                 "ThreeH=" + ThreeH +
                 '}';
     }

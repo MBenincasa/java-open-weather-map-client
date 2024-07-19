@@ -141,4 +141,15 @@ public class DefaultOpenWeatherMapClientTest {
         assertEquals(2, response.getList().size());
         assertEquals("Pero", response.getCity().getName());
     }
+
+    @Test
+    public void testCurrentAirPollution() throws RestClientException {
+        var response = openWeatherMapClient.currentAirPollution()
+                .coordinates(45.5101617, 9.0894415)
+                .response();
+
+        assertNotNull(response);
+        assertNotNull(response.getCoord());
+        assertNotNull(response.getList());
+    }
 }

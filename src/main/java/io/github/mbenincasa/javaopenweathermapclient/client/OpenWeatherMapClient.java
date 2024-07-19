@@ -1,12 +1,14 @@
 package io.github.mbenincasa.javaopenweathermapclient.client;
 
-import io.github.mbenincasa.javaopenweathermapclient.request.CurrentWeatherRequest;
-import io.github.mbenincasa.javaopenweathermapclient.request.FiveDayWeatherForecastRequest;
-import io.github.mbenincasa.javarestclient.exception.RestClientException;
+import io.github.mbenincasa.javaopenweathermapclient.request.airPollution.CurrentAirPollutionRequest;
+import io.github.mbenincasa.javaopenweathermapclient.request.currentWeather.CurrentWeatherRequest;
+import io.github.mbenincasa.javaopenweathermapclient.request.weatherForecast.FiveDayWeatherForecastRequest;
 
 public interface OpenWeatherMapClient {
 
-    CurrentWeatherRequest currentWeather() throws RestClientException;
+    CurrentWeatherRequest currentWeather();
 
-    FiveDayWeatherForecastRequest fiveDayWeatherForecast() throws RestClientException;
+    FiveDayWeatherForecastRequest fiveDayWeatherForecast();
+
+    CurrentAirPollutionRequest currentAirPollution();
 }

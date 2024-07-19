@@ -1,4 +1,4 @@
-package io.github.mbenincasa.javaopenweathermapclient.dto.fiveDayWeatherForecast;
+package io.github.mbenincasa.javaopenweathermapclient.dto.weatherForecast;
 
 import io.github.mbenincasa.javaopenweathermapclient.dto.common.Coord;
 

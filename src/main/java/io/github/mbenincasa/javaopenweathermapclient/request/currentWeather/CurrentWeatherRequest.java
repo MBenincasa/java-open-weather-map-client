@@ -1,4 +1,4 @@
-package io.github.mbenincasa.javaopenweathermapclient.request;
+package io.github.mbenincasa.javaopenweathermapclient.request.currentWeather;
 
 import io.github.mbenincasa.javaopenweathermapclient.dto.CurrentWeatherDTO;
 import io.github.mbenincasa.javaopenweathermapclient.utils.HttpRequestExecutor;
