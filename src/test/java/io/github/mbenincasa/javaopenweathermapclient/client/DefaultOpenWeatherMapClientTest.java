@@ -94,6 +94,51 @@ public class DefaultOpenWeatherMapClientTest {
         assertEquals(4, response.getCnt());
         assertEquals(4, response.getList().size());
         assertEquals("Pero", response.getCity().getName());
-        System.out.println(response);
+    }
+
+    @Test
+    public void testFiveDayWeatherForecastCityName() throws RestClientException {
+        var response = openWeatherMapClient.fiveDayWeatherForecast()
+                .cityName("London", null, "uk")
+                .cnt(4)
+                .units("metric")
+                .response();
+
+        assertNotNull(response);
+        assertNotNull(response.getCity());
+        assertNotNull(response.getList());
+        assertEquals(4, response.getCnt());
+        assertEquals(4, response.getList().size());
+        assertEquals("London", response.getCity().getName());
+    }
+
+    @Test
+    public void testFiveDayWeatherForecastCityId() throws RestClientException {
+        var response = openWeatherMapClient.fiveDayWeatherForecast()
+                .cityId(2643743)
+                .cnt(2)
+                .response();
+
+        assertNotNull(response);
+        assertNotNull(response.getCity());
+        assertNotNull(response.getList());
+        assertEquals(2, response.getCnt());
+        assertEquals(2, response.getList().size());
+        assertEquals("London", response.getCity().getName());
+    }
+
+    @Test
+    public void testFiveDayWeatherForecastZipCode() throws RestClientException {
+        var response = openWeatherMapClient.fiveDayWeatherForecast()
+                .zipCode("20016", "it")
+                .cnt(2)
+                .response();
+
+        assertNotNull(response);
+        assertNotNull(response.getCity());
+        assertNotNull(response.getList());
+        assertEquals(2, response.getCnt());
+        assertEquals(2, response.getList().size());
+        assertEquals("Pero", response.getCity().getName());
     }
 }
