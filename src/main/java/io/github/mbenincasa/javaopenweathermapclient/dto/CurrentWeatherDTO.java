@@ -1,6 +1,9 @@
 package io.github.mbenincasa.javaopenweathermapclient.dto;
 
 import io.github.mbenincasa.javaopenweathermapclient.dto.common.*;
+import io.github.mbenincasa.javaopenweathermapclient.dto.currentWeather.Rain;
+import io.github.mbenincasa.javaopenweathermapclient.dto.currentWeather.Snow;
+import io.github.mbenincasa.javaopenweathermapclient.dto.currentWeather.Sys;
 
 import java.util.List;
 

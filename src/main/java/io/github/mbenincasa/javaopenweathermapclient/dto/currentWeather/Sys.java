@@ -1,4 +1,4 @@
-package io.github.mbenincasa.javaopenweathermapclient.dto.common;
+package io.github.mbenincasa.javaopenweathermapclient.dto.currentWeather;
 
 public class Sys {
 

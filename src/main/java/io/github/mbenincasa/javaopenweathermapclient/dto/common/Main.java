@@ -17,11 +17,13 @@ public class Main {
     private Integer seaLevel;
     @JsonProperty("grnd_level")
     private Integer grndLevel;
+    @JsonProperty("temp_kf")
+    private Double tempKf;
 
     public Main() {
     }
 
-    public Main(Double temp, Double feelsLike, Double tempMin, Double tempMax, Integer pressure, Integer humidity, Integer seaLevel, Integer grndLevel) {
+    public Main(Double temp, Double feelsLike, Double tempMin, Double tempMax, Integer pressure, Integer humidity, Integer seaLevel, Integer grndLevel, Double tempKf) {
         this.temp = temp;
         this.feelsLike = feelsLike;
         this.tempMin = tempMin;
@@ -30,6 +32,7 @@ public class Main {
         this.humidity = humidity;
         this.seaLevel = seaLevel;
         this.grndLevel = grndLevel;
+        this.tempKf = tempKf;
     }
 
     public Double getTemp() {
@@ -96,6 +99,14 @@ public class Main {
         this.grndLevel = grndLevel;
     }
 
+    public Double getTempKf() {
+        return tempKf;
+    }
+
+    public void setTempKf(Double tempKf) {
+        this.tempKf = tempKf;
+    }
+
     @Override
     public String toString() {
         return "Main{" +
@@ -107,6 +118,7 @@ public class Main {
                 ", humidity=" + humidity +
                 ", seaLevel=" + seaLevel +
                 ", grndLevel=" + grndLevel +
+                ", tempKf=" + tempKf +
                 '}';
     }
 }

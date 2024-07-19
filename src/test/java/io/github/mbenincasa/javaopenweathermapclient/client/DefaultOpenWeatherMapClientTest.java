@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class DefaultOpenWeatherMapClientTest {
 
     private OpenWeatherMapClient openWeatherMapClient;
-    private final static String API_KEY = "API_EKY";
+    private final static String API_KEY = "API_KEY";
 
     @BeforeEach
     void setUp() {
@@ -77,5 +77,23 @@ public class DefaultOpenWeatherMapClientTest {
         assertNotNull(response.getWeather());
         assertNotNull(response.getMain());
         assertEquals("Pero", response.getName());
+    }
+
+    @Test
+    public void testFiveDayWeatherForecastCoordinates() throws RestClientException {
+        var response = openWeatherMapClient.fiveDayWeatherForecast()
+                .coordinates(45.5101617, 9.0894415)
+                .cnt(4)
+                .units("metric")
+                .lang("it")
+                .response();
+
+        assertNotNull(response);
+        assertNotNull(response.getCity());
+        assertNotNull(response.getList());
+        assertEquals(4, response.getCnt());
+        assertEquals(4, response.getList().size());
+        assertEquals("Pero", response.getCity().getName());
+        System.out.println(response);
     }
 }

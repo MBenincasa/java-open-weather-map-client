@@ -1,18 +1,18 @@
-package io.github.mbenincasa.javaopenweathermapclient.dto.common;
+package io.github.mbenincasa.javaopenweathermapclient.dto.currentWeather;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Snow {
+public class Rain {
 
     @JsonProperty("1h")
     private Double OneH;
     @JsonProperty("3h")
     private Double ThreeH;
 
-    public Snow() {
+    public Rain() {
     }
 
-    public Snow(Double oneH, Double threeH) {
+    public Rain(Double oneH, Double threeH) {
         OneH = oneH;
         ThreeH = threeH;
     }
@@ -35,7 +35,7 @@ public class Snow {
 
     @Override
     public String toString() {
-        return "Snow{" +
+        return "Rain{" +
                 "OneH=" + OneH +
                 ", ThreeH=" + ThreeH +
                 '}';
