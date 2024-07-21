@@ -37,15 +37,15 @@ public class FiveDayWeatherForecastRequest {
 
         private Builder(Double lat, Double lon, String apiKey) {
             this.query = new HashMap<>();
-            query.put("appid", apiKey);
-            query.put("lat", lat);
-            query.put("lon", lon);
+            this.query.put("appid", apiKey);
+            this.query.put("lat", lat);
+            this.query.put("lon", lon);
         }
 
         private Builder(String cityName, String stateCode, String countryCode, String apiKey) {
             this.query = new HashMap<>();
-            query.put("appid", apiKey);
-            query.put("q",
+            this.query.put("appid", apiKey);
+            this.query.put("q",
                     (stateCode == null || stateCode.isEmpty())
                             ? ((countryCode == null || countryCode.isEmpty())
                             ? cityName
@@ -56,31 +56,31 @@ public class FiveDayWeatherForecastRequest {
 
         private Builder(Integer cityId, String apiKey) {
             this.query = new HashMap<>();
-            query.put("appid", apiKey);
-            query.put("id", cityId);
+            this.query.put("appid", apiKey);
+            this.query.put("id", cityId);
         }
 
         private Builder(String zipCode, String countryCode, String apiKey) {
             this.query = new HashMap<>();
-            query.put("appid", apiKey);
-            query.put("zip",
+            this.query.put("appid", apiKey);
+            this.query.put("zip",
                     (countryCode == null || countryCode.isEmpty())
                             ? zipCode
                             : zipCode + "," + countryCode);
         }
 
         public Builder units(String unit) {
-            query.put("units", unit);
+            this.query.put("units", unit);
             return this;
         }
 
         public Builder lang(String lang) {
-            query.put("lang", lang);
+            this.query.put("lang", lang);
             return this;
         }
 
         public Builder cnt(Integer cnt) {
-            query.put("cnt", cnt);
+            this.query.put("cnt", cnt);
             return this;
         }
 

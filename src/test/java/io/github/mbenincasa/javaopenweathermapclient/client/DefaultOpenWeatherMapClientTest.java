@@ -152,4 +152,26 @@ public class DefaultOpenWeatherMapClientTest {
         assertNotNull(response.getCoord());
         assertNotNull(response.getList());
     }
+
+    @Test
+    public void testForecastAirPollution() throws RestClientException {
+        var response = openWeatherMapClient.forecastAirPollution()
+                .coordinates(45.5101617, 9.0894415)
+                .response();
+
+        assertNotNull(response);
+        assertNotNull(response.getCoord());
+        assertNotNull(response.getList());
+    }
+
+    @Test
+    public void testHistoricalAirPollution() throws RestClientException {
+        var response = openWeatherMapClient.historicalAirPollution()
+                .coordinatesAndTime(45.5101617, 9.0894415, 1606223802, 1606482999)
+                .response();
+
+        assertNotNull(response);
+        assertNotNull(response.getCoord());
+        assertNotNull(response.getList());
+    }
 }

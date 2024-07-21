@@ -7,11 +7,11 @@ import io.github.mbenincasa.javarestclient.exception.RestClientException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CurrentAirPollutionRequest {
+public class ForecastAirPollutionRequest {
 
     private final String apiKey;
 
-    public CurrentAirPollutionRequest(String apiKey) {
+    public ForecastAirPollutionRequest(String apiKey) {
         this.apiKey = apiKey;
     }
 
@@ -32,7 +32,7 @@ public class CurrentAirPollutionRequest {
 
         public AirPollutionDTO response() throws RestClientException {
             return HttpRequestExecutor.execute(
-                    "https://api.openweathermap.org/data/2.5/air_pollution",
+                    "https://api.openweathermap.org/data/2.5/air_pollution/forecast",
                     this.query,
                     AirPollutionDTO.class
             );
