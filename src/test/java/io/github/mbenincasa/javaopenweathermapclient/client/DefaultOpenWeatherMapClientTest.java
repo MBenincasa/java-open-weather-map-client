@@ -174,4 +174,31 @@ public class DefaultOpenWeatherMapClientTest {
         assertNotNull(response.getCoord());
         assertNotNull(response.getList());
     }
+
+    @Test
+    public void testGeocodingByLocationName() throws RestClientException {
+        var response = openWeatherMapClient.geocoding()
+                .locationName("London", "England", "GB")
+                .response();
+
+        assertNotNull(response);
+        assertEquals(1, response.size());
+        var dto = response.get(0);
+        assertNotNull(dto);
+        assertEquals("London", dto.getName());
+        assertEquals("GB", dto.getCountry());
+        assertEquals("England", dto.getState());
+        assertEquals("Londra", dto.getLocalNames().getIt());
+    }
+
+    @Test
+    public void testGeocodingByZipCode() throws RestClientException {
+        var response = openWeatherMapClient.geocoding()
+                .zipCode("E14","GB")
+                .response();
+
+        assertNotNull(response);
+        assertEquals("London", response.getName());
+        assertEquals("GB", response.getCountry());
+    }
 }
