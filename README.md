@@ -8,7 +8,7 @@ The OpenWeatherMap Java Client Library is a robust and easy-to-use Java library 
 Java 17 or above.
 
 ## Dependencies
-- io.github.mbenincasa:java-rest-client:jar:0.3.0
+- io.github.mbenincasa:java-rest-client:jar:0.3.1
 - org.junit.jupiter:junit-jupiter:jar:5.10.3
 - org.junit.platform:junit-platform-suite-engine:jar:1.10.3
 
