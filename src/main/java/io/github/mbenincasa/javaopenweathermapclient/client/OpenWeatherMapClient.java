@@ -4,6 +4,7 @@ import io.github.mbenincasa.javaopenweathermapclient.request.airPollution.Curren
 import io.github.mbenincasa.javaopenweathermapclient.request.airPollution.ForecastAirPollutionRequest;
 import io.github.mbenincasa.javaopenweathermapclient.request.airPollution.HistoricalAirPollutionRequest;
 import io.github.mbenincasa.javaopenweathermapclient.request.currentWeather.CurrentWeatherRequest;
+import io.github.mbenincasa.javaopenweathermapclient.request.geocoding.GeocodingRequest;
 import io.github.mbenincasa.javaopenweathermapclient.request.weatherForecast.FiveDayWeatherForecastRequest;
 
 public interface OpenWeatherMapClient {
@@ -17,4 +18,6 @@ public interface OpenWeatherMapClient {
     ForecastAirPollutionRequest forecastAirPollution();
 
     HistoricalAirPollutionRequest historicalAirPollution();
+
+    GeocodingRequest geocoding();
 }

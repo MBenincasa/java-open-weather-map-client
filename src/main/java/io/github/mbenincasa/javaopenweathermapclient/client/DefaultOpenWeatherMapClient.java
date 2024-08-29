@@ -4,6 +4,7 @@ import io.github.mbenincasa.javaopenweathermapclient.request.airPollution.Curren
 import io.github.mbenincasa.javaopenweathermapclient.request.airPollution.ForecastAirPollutionRequest;
 import io.github.mbenincasa.javaopenweathermapclient.request.airPollution.HistoricalAirPollutionRequest;
 import io.github.mbenincasa.javaopenweathermapclient.request.currentWeather.CurrentWeatherRequest;
+import io.github.mbenincasa.javaopenweathermapclient.request.geocoding.GeocodingRequest;
 import io.github.mbenincasa.javaopenweathermapclient.request.weatherForecast.FiveDayWeatherForecastRequest;
 
 public class DefaultOpenWeatherMapClient implements OpenWeatherMapClient {
@@ -37,5 +38,10 @@ public class DefaultOpenWeatherMapClient implements OpenWeatherMapClient {
     @Override
     public HistoricalAirPollutionRequest historicalAirPollution() {
         return new HistoricalAirPollutionRequest(this.apiKey);
+    }
+
+    @Override
+    public GeocodingRequest geocoding() {
+        return new GeocodingRequest(this.apiKey);
     }
 }
