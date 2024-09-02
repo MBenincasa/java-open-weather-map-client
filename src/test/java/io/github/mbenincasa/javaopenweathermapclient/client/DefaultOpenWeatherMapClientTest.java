@@ -1,5 +1,7 @@
 package io.github.mbenincasa.javaopenweathermapclient.client;
 
+import io.github.mbenincasa.javaopenweathermapclient.request.common.Lang;
+import io.github.mbenincasa.javaopenweathermapclient.request.common.Unit;
 import io.github.mbenincasa.javarestclient.exception.RestClientException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,8 +23,8 @@ public class DefaultOpenWeatherMapClientTest {
     public void testCurrentWeatherCoordinates() throws RestClientException {
         var response = openWeatherMapClient.currentWeather()
                 .coordinates(45.5101617, 9.0894415)
-                .units("metric")
-                .lang("it")
+                .units(Unit.METRIC)
+                .lang(Lang.ITALIAN)
                 .response();
 
         assertNotNull(response);
@@ -84,8 +86,8 @@ public class DefaultOpenWeatherMapClientTest {
         var response = openWeatherMapClient.fiveDayWeatherForecast()
                 .coordinates(45.5101617, 9.0894415)
                 .cnt(4)
-                .units("metric")
-                .lang("it")
+                .units(Unit.METRIC)
+                .lang(Lang.ITALIAN)
                 .response();
 
         assertNotNull(response);
@@ -101,7 +103,7 @@ public class DefaultOpenWeatherMapClientTest {
         var response = openWeatherMapClient.fiveDayWeatherForecast()
                 .cityName("London", null, "uk")
                 .cnt(4)
-                .units("metric")
+                .units(Unit.METRIC)
                 .response();
 
         assertNotNull(response);

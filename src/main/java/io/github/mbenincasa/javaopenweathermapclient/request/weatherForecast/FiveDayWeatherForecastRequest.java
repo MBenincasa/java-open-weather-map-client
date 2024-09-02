@@ -1,6 +1,8 @@
 package io.github.mbenincasa.javaopenweathermapclient.request.weatherForecast;
 
 import io.github.mbenincasa.javaopenweathermapclient.dto.WeatherForecastDTO;
+import io.github.mbenincasa.javaopenweathermapclient.request.common.Lang;
+import io.github.mbenincasa.javaopenweathermapclient.request.common.Unit;
 import io.github.mbenincasa.javaopenweathermapclient.utils.HttpRequestExecutor;
 import io.github.mbenincasa.javarestclient.exception.RestClientException;
 
@@ -69,13 +71,13 @@ public class FiveDayWeatherForecastRequest {
                             : zipCode + "," + countryCode);
         }
 
-        public Builder units(String unit) {
-            this.query.put("units", unit);
+        public Builder units(Unit unit) {
+            this.query.put("units", unit.getValue());
             return this;
         }
 
-        public Builder lang(String lang) {
-            this.query.put("lang", lang);
+        public Builder lang(Lang lang) {
+            this.query.put("lang", lang.getValue());
             return this;
         }
 
