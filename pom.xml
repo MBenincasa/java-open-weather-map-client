@@ -38,7 +38,7 @@
 
     <repositories>
         <repository>
-            <id>github</id>
+            <id>github-mbenincasa</id>
             <url>https://maven.pkg.github.com/MBenincasa/java-rest-client</url>
         </repository>
     </repositories>
