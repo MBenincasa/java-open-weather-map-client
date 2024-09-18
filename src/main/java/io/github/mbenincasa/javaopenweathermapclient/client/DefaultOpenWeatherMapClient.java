@@ -5,7 +5,8 @@ import io.github.mbenincasa.javaopenweathermapclient.request.airPollution.Foreca
 import io.github.mbenincasa.javaopenweathermapclient.request.airPollution.HistoricalAirPollutionRequest;
 import io.github.mbenincasa.javaopenweathermapclient.request.currentWeather.CurrentWeatherRequest;
 import io.github.mbenincasa.javaopenweathermapclient.request.geocoding.GeocodingRequest;
-import io.github.mbenincasa.javaopenweathermapclient.request.weatherForecast.FiveDayWeatherForecastRequest;
+import io.github.mbenincasa.javaopenweathermapclient.request.weatherForecast.DailyWeatherForecastRequest;
+import io.github.mbenincasa.javaopenweathermapclient.request.weatherForecast.FiveDaysWeatherForecastRequest;
 
 public class DefaultOpenWeatherMapClient implements OpenWeatherMapClient {
 
@@ -21,8 +22,13 @@ public class DefaultOpenWeatherMapClient implements OpenWeatherMapClient {
     }
 
     @Override
-    public FiveDayWeatherForecastRequest fiveDayWeatherForecast() {
-        return new FiveDayWeatherForecastRequest(this.apiKey);
+    public FiveDaysWeatherForecastRequest fiveDaysWeatherForecast() {
+        return new FiveDaysWeatherForecastRequest(this.apiKey);
+    }
+
+    @Override
+    public DailyWeatherForecastRequest dailyWeatherForecast() {
+        return new DailyWeatherForecastRequest(this.apiKey);
     }
 
     @Override

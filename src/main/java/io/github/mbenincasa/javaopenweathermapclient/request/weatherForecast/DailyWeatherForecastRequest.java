@@ -1,6 +1,6 @@
 package io.github.mbenincasa.javaopenweathermapclient.request.weatherForecast;
 
-import io.github.mbenincasa.javaopenweathermapclient.dto.WeatherForecastDTO;
+import io.github.mbenincasa.javaopenweathermapclient.dto.DailyWeatherForecastDTO;
 import io.github.mbenincasa.javaopenweathermapclient.request.common.Lang;
 import io.github.mbenincasa.javaopenweathermapclient.request.common.Unit;
 import io.github.mbenincasa.javaopenweathermapclient.utils.HttpRequestExecutor;
@@ -9,11 +9,11 @@ import io.github.mbenincasa.javarestclient.exception.RestClientException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class FiveDayWeatherForecastRequest {
+public class DailyWeatherForecastRequest {
 
     private final String apiKey;
 
-    public FiveDayWeatherForecastRequest(String apiKey) {
+    public DailyWeatherForecastRequest(String apiKey) {
         this.apiKey = apiKey;
     }
 
@@ -86,11 +86,11 @@ public class FiveDayWeatherForecastRequest {
             return this;
         }
 
-        public WeatherForecastDTO response() throws RestClientException {
+        public DailyWeatherForecastDTO response() throws RestClientException {
             return HttpRequestExecutor.execute(
-                    "https://api.openweathermap.org/data/2.5/forecast",
+                    "https://api.openweathermap.org/data/2.5/forecast/daily",
                     this.query,
-                    WeatherForecastDTO.class
+                    DailyWeatherForecastDTO.class
             );
         }
     }

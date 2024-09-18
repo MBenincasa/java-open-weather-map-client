@@ -1,4 +1,4 @@
-package io.github.mbenincasa.javaopenweathermapclient.dto.weatherForecast;
+package io.github.mbenincasa.javaopenweathermapclient.dto.fiveDaysWeatherForecast;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.mbenincasa.javaopenweathermapclient.dto.common.Clouds;

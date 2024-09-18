@@ -1,11 +1,11 @@
 package io.github.mbenincasa.javaopenweathermapclient.dto;
 
-import io.github.mbenincasa.javaopenweathermapclient.dto.weatherForecast.City;
-import io.github.mbenincasa.javaopenweathermapclient.dto.weatherForecast.ForecastList;
+import io.github.mbenincasa.javaopenweathermapclient.dto.fiveDaysWeatherForecast.City;
+import io.github.mbenincasa.javaopenweathermapclient.dto.fiveDaysWeatherForecast.ForecastList;
 
 import java.util.List;
 
-public class WeatherForecastDTO {
+public class FiveDaysWeatherForecastDTO {
 
     private String cod;
     private Integer message;
@@ -13,10 +13,10 @@ public class WeatherForecastDTO {
     private List<ForecastList> list;
     private City city;
 
-    public WeatherForecastDTO() {
+    public FiveDaysWeatherForecastDTO() {
     }
 
-    public WeatherForecastDTO(String cod, Integer message, Integer cnt, List<ForecastList> list, City city) {
+    public FiveDaysWeatherForecastDTO(String cod, Integer message, Integer cnt, List<ForecastList> list, City city) {
         this.cod = cod;
         this.message = message;
         this.cnt = cnt;

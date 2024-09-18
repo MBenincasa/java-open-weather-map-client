@@ -1,4 +1,4 @@
-package io.github.mbenincasa.javaopenweathermapclient.dto.weatherForecast;
+package io.github.mbenincasa.javaopenweathermapclient.dto.fiveDaysWeatherForecast;
 
 public class Sys {
 
