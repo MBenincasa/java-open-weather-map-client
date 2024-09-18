@@ -22,16 +22,8 @@ public class AirPollutionDTO {
         return coord;
     }
 
-    public void setCoord(Coord coord) {
-        this.coord = coord;
-    }
-
     public List<AirPollutionList> getList() {
         return list;
-    }
-
-    public void setList(List<AirPollutionList> list) {
-        this.list = list;
     }
 
     @Override

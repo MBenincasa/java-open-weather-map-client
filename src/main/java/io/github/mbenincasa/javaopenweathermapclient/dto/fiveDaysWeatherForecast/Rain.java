@@ -18,10 +18,6 @@ public class Rain {
         return ThreeH;
     }
 
-    public void setThreeH(Double threeH) {
-        ThreeH = threeH;
-    }
-
     @Override
     public String toString() {
         return "Rain{" +

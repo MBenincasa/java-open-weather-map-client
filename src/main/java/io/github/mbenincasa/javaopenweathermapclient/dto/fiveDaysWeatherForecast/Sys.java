@@ -15,10 +15,6 @@ public class Sys {
         return pod;
     }
 
-    public void setPod(String pod) {
-        this.pod = pod;
-    }
-
     @Override
     public String toString() {
         return "Sys{" +
