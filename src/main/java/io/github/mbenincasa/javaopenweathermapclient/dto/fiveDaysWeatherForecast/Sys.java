@@ -1,4 +1,4 @@
-package io.github.mbenincasa.javaopenweathermapclient.dto.weatherForecast;
+package io.github.mbenincasa.javaopenweathermapclient.dto.fiveDaysWeatherForecast;
 
 public class Sys {
 
@@ -13,10 +13,6 @@ public class Sys {
 
     public String getPod() {
         return pod;
-    }
-
-    public void setPod(String pod) {
-        this.pod = pod;
     }
 
     @Override

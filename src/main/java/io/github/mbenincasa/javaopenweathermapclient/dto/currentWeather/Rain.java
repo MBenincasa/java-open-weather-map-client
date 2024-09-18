@@ -21,16 +21,8 @@ public class Rain {
         return OneH;
     }
 
-    public void setOneH(Double oneH) {
-        OneH = oneH;
-    }
-
     public Double getThreeH() {
         return ThreeH;
-    }
-
-    public void setThreeH(Double threeH) {
-        ThreeH = threeH;
     }
 
     @Override

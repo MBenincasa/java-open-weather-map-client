@@ -1,4 +1,4 @@
-package io.github.mbenincasa.javaopenweathermapclient.dto.common;
+package io.github.mbenincasa.javaopenweathermapclient.dto.dailyWeatherForecast;
 
 public class Weather {
 

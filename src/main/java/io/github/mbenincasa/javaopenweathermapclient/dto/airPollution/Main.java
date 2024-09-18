@@ -15,10 +15,6 @@ public class Main {
         return aqi;
     }
 
-    public void setAqi(Integer aqi) {
-        this.aqi = aqi;
-    }
-
     @Override
     public String toString() {
         return "Main{" +

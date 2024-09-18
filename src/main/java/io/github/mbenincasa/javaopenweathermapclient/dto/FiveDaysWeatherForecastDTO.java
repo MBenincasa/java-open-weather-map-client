@@ -1,11 +1,11 @@
 package io.github.mbenincasa.javaopenweathermapclient.dto;
 
-import io.github.mbenincasa.javaopenweathermapclient.dto.weatherForecast.City;
-import io.github.mbenincasa.javaopenweathermapclient.dto.weatherForecast.ForecastList;
+import io.github.mbenincasa.javaopenweathermapclient.dto.fiveDaysWeatherForecast.City;
+import io.github.mbenincasa.javaopenweathermapclient.dto.fiveDaysWeatherForecast.ForecastList;
 
 import java.util.List;
 
-public class WeatherForecastDTO {
+public class FiveDaysWeatherForecastDTO {
 
     private String cod;
     private Integer message;
@@ -13,10 +13,10 @@ public class WeatherForecastDTO {
     private List<ForecastList> list;
     private City city;
 
-    public WeatherForecastDTO() {
+    public FiveDaysWeatherForecastDTO() {
     }
 
-    public WeatherForecastDTO(String cod, Integer message, Integer cnt, List<ForecastList> list, City city) {
+    public FiveDaysWeatherForecastDTO(String cod, Integer message, Integer cnt, List<ForecastList> list, City city) {
         this.cod = cod;
         this.message = message;
         this.cnt = cnt;
@@ -28,40 +28,20 @@ public class WeatherForecastDTO {
         return cod;
     }
 
-    public void setCod(String cod) {
-        this.cod = cod;
-    }
-
     public Integer getMessage() {
         return message;
-    }
-
-    public void setMessage(Integer message) {
-        this.message = message;
     }
 
     public Integer getCnt() {
         return cnt;
     }
 
-    public void setCnt(Integer cnt) {
-        this.cnt = cnt;
-    }
-
     public List<ForecastList> getList() {
         return list;
     }
 
-    public void setList(List<ForecastList> list) {
-        this.list = list;
-    }
-
     public City getCity() {
         return city;
-    }
-
-    public void setCity(City city) {
-        this.city = city;
     }
 
     @Override

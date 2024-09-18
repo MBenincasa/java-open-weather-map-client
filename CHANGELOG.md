@@ -2,6 +2,17 @@
 
 All significant changes to this project will be documented in this file.
 
+## [0.2.0] - 2024-09-18
+
+### Added
+- **Daily Forecast (16 days)**: Access detailed weather forecasts at daily intervals for the next 16 days.
+
+### Changed
+- **3-hour Forecast (5 days)**: Renamed methods and classes.
+
+### Removed
+- Unnecessary setters within DTOs have been removed.
+
 ## [0.1.0] - 2024-09-03
 
 ### Added
