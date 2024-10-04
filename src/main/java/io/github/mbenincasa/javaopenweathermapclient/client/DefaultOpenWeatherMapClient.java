@@ -1,8 +1,6 @@
 package io.github.mbenincasa.javaopenweathermapclient.client;
 
-import io.github.mbenincasa.javaopenweathermapclient.request.airPollution.CurrentAirPollutionRequest;
-import io.github.mbenincasa.javaopenweathermapclient.request.airPollution.ForecastAirPollutionRequest;
-import io.github.mbenincasa.javaopenweathermapclient.request.airPollution.HistoricalAirPollutionRequest;
+import io.github.mbenincasa.javaopenweathermapclient.request.airPollution.AirPollutionRequest;
 import io.github.mbenincasa.javaopenweathermapclient.request.currentWeather.CurrentWeatherRequest;
 import io.github.mbenincasa.javaopenweathermapclient.request.geocoding.GeocodingRequest;
 import io.github.mbenincasa.javaopenweathermapclient.request.weatherForecast.DailyWeatherForecastRequest;
@@ -32,18 +30,8 @@ public class DefaultOpenWeatherMapClient implements OpenWeatherMapClient {
     }
 
     @Override
-    public CurrentAirPollutionRequest currentAirPollution() {
-        return new CurrentAirPollutionRequest(this.apiKey);
-    }
-
-    @Override
-    public ForecastAirPollutionRequest forecastAirPollution() {
-        return new ForecastAirPollutionRequest(this.apiKey);
-    }
-
-    @Override
-    public HistoricalAirPollutionRequest historicalAirPollution() {
-        return new HistoricalAirPollutionRequest(this.apiKey);
+    public AirPollutionRequest airPollution() {
+        return new AirPollutionRequest(this.apiKey);
     }
 
     @Override

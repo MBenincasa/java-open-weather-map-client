@@ -209,7 +209,8 @@ public class DefaultOpenWeatherMapClientTest {
 
     @Test
     public void testCurrentAirPollution() throws RestClientException {
-        var response = openWeatherMapClient.currentAirPollution()
+        var response = openWeatherMapClient.airPollution()
+                .current()
                 .coordinates(45.5101617, 9.0894415)
                 .response();
 
@@ -220,7 +221,8 @@ public class DefaultOpenWeatherMapClientTest {
 
     @Test
     public void testForecastAirPollution() throws RestClientException {
-        var response = openWeatherMapClient.forecastAirPollution()
+        var response = openWeatherMapClient.airPollution()
+                .forecast()
                 .coordinates(45.5101617, 9.0894415)
                 .response();
 
@@ -231,7 +233,8 @@ public class DefaultOpenWeatherMapClientTest {
 
     @Test
     public void testHistoricalAirPollution() throws RestClientException {
-        var response = openWeatherMapClient.historicalAirPollution()
+        var response = openWeatherMapClient.airPollution()
+                .historical()
                 .coordinatesAndTime(45.5101617, 9.0894415, 1606223802, 1606482999)
                 .response();
 
