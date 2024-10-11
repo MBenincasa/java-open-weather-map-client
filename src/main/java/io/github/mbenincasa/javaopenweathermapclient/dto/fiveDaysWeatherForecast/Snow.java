@@ -5,23 +5,23 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Snow {
 
     @JsonProperty("3h")
-    private Double ThreeH;
+    private Double threeH;
 
     public Snow() {
     }
 
     public Snow(Double threeH) {
-        ThreeH = threeH;
+        this.threeH = threeH;
     }
 
     public Double getThreeH() {
-        return ThreeH;
+        return threeH;
     }
 
     @Override
     public String toString() {
         return "Snow{" +
-                "ThreeH=" + ThreeH +
+                "threeH=" + threeH +
                 '}';
     }
 }

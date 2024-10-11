@@ -5,6 +5,7 @@ import io.github.mbenincasa.javaopenweathermapclient.request.currentWeather.Curr
 import io.github.mbenincasa.javaopenweathermapclient.request.geocoding.GeocodingRequest;
 import io.github.mbenincasa.javaopenweathermapclient.request.weatherForecast.DailyWeatherForecastRequest;
 import io.github.mbenincasa.javaopenweathermapclient.request.weatherForecast.FiveDaysWeatherForecastRequest;
+import io.github.mbenincasa.javaopenweathermapclient.request.weatherForecast.HourlyWeatherForecastRequest;
 
 public interface OpenWeatherMapClient {
 
@@ -13,6 +14,8 @@ public interface OpenWeatherMapClient {
     FiveDaysWeatherForecastRequest fiveDaysWeatherForecast();
 
     DailyWeatherForecastRequest dailyWeatherForecast();
+
+    HourlyWeatherForecastRequest hourlyWeatherForecast();
 
     AirPollutionRequest airPollution();
 
