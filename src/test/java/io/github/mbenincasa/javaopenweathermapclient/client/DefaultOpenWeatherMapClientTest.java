@@ -271,6 +271,65 @@ public class DefaultOpenWeatherMapClientTest {
     }
 
     @Test
+    public void testClimaticWeatherForecastCoordinates() throws RestClientException {
+        var response = openWeatherMapClient.climaticWeatherForecast()
+                .coordinates(45.5101617, 9.0894415)
+                .cnt(4)
+                .units(Unit.METRIC)
+                .lang(Lang.ITALIAN)
+                .response();
+
+        assertNotNull(response);
+        assertNotNull(response.getCity());
+        assertNotNull(response.getList());
+        assertEquals(4, response.getList().size());
+        assertEquals("Zocca", response.getCity().getName());
+    }
+
+    @Test
+    public void testClimaticWeatherForecastCityName() throws RestClientException {
+        var response = openWeatherMapClient.climaticWeatherForecast()
+                .cityName("Zocca", null, "it")
+                .cnt(4)
+                .units(Unit.METRIC)
+                .response();
+
+        assertNotNull(response);
+        assertNotNull(response.getCity());
+        assertNotNull(response.getList());
+        assertEquals(4, response.getList().size());
+        assertEquals("Zocca", response.getCity().getName());
+    }
+
+    @Test
+    public void testClimaticWeatherForecastCityId() throws RestClientException {
+        var response = openWeatherMapClient.climaticWeatherForecast()
+                .cityId(2643743)
+                .cnt(2)
+                .response();
+
+        assertNotNull(response);
+        assertNotNull(response.getCity());
+        assertNotNull(response.getList());
+        assertEquals(2, response.getList().size());
+        assertEquals("London", response.getCity().getName());
+    }
+
+    @Test
+    public void testClimaticWeatherForecastZipCode() throws RestClientException {
+        var response = openWeatherMapClient.climaticWeatherForecast()
+                .zipCode("20016", "it")
+                .cnt(2)
+                .response();
+
+        assertNotNull(response);
+        assertNotNull(response.getCity());
+        assertNotNull(response.getList());
+        assertEquals(2, response.getList().size());
+        assertEquals("Pero", response.getCity().getName());
+    }
+
+    @Test
     public void testCurrentAirPollution() throws RestClientException {
         var response = openWeatherMapClient.airPollution()
                 .current()
