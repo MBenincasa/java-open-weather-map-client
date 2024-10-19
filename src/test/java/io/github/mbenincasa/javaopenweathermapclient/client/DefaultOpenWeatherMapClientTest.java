@@ -82,7 +82,7 @@ public class DefaultOpenWeatherMapClientTest {
     }
 
     @Test
-    public void testfiveDaysWeatherForecastCoordinates() throws RestClientException {
+    public void testFiveDaysWeatherForecastCoordinates() throws RestClientException {
         var response = openWeatherMapClient.fiveDaysWeatherForecast()
                 .coordinates(45.5101617, 9.0894415)
                 .cnt(4)
@@ -99,7 +99,7 @@ public class DefaultOpenWeatherMapClientTest {
     }
 
     @Test
-    public void testfiveDaysWeatherForecastCityName() throws RestClientException {
+    public void testFiveDaysWeatherForecastCityName() throws RestClientException {
         var response = openWeatherMapClient.fiveDaysWeatherForecast()
                 .cityName("London", null, "uk")
                 .cnt(4)
@@ -115,7 +115,7 @@ public class DefaultOpenWeatherMapClientTest {
     }
 
     @Test
-    public void testfiveDaysWeatherForecastCityId() throws RestClientException {
+    public void testFiveDaysWeatherForecastCityId() throws RestClientException {
         var response = openWeatherMapClient.fiveDaysWeatherForecast()
                 .cityId(2643743)
                 .cnt(2)
@@ -130,7 +130,7 @@ public class DefaultOpenWeatherMapClientTest {
     }
 
     @Test
-    public void testfiveDaysWeatherForecastZipCode() throws RestClientException {
+    public void testFiveDaysWeatherForecastZipCode() throws RestClientException {
         var response = openWeatherMapClient.fiveDaysWeatherForecast()
                 .zipCode("20016", "it")
                 .cnt(2)
@@ -208,8 +208,131 @@ public class DefaultOpenWeatherMapClientTest {
     }
 
     @Test
+    public void testHourlyWeatherForecastCoordinates() throws RestClientException {
+        var response = openWeatherMapClient.hourlyWeatherForecast()
+                .coordinates(45.5101617, 9.0894415)
+                .cnt(4)
+                .units(Unit.METRIC)
+                .lang(Lang.ITALIAN)
+                .response();
+
+        assertNotNull(response);
+        assertNotNull(response.getCity());
+        assertNotNull(response.getList());
+        assertEquals(4, response.getCnt());
+        assertEquals(4, response.getList().size());
+        assertEquals("Zocca", response.getCity().getName());
+    }
+
+    @Test
+    public void testHourlyWeatherForecastCityName() throws RestClientException {
+        var response = openWeatherMapClient.hourlyWeatherForecast()
+                .cityName("Zocca", null, "it")
+                .cnt(4)
+                .units(Unit.METRIC)
+                .response();
+
+        assertNotNull(response);
+        assertNotNull(response.getCity());
+        assertNotNull(response.getList());
+        assertEquals(4, response.getCnt());
+        assertEquals(4, response.getList().size());
+        assertEquals("Zocca", response.getCity().getName());
+    }
+
+    @Test
+    public void testHourlyWeatherForecastCityId() throws RestClientException {
+        var response = openWeatherMapClient.hourlyWeatherForecast()
+                .cityId(2643743)
+                .cnt(2)
+                .response();
+
+        assertNotNull(response);
+        assertNotNull(response.getCity());
+        assertNotNull(response.getList());
+        assertEquals(2, response.getCnt());
+        assertEquals(2, response.getList().size());
+        assertEquals("London", response.getCity().getName());
+    }
+
+    @Test
+    public void testHourlyWeatherForecastZipCode() throws RestClientException {
+        var response = openWeatherMapClient.hourlyWeatherForecast()
+                .zipCode("20016", "it")
+                .cnt(2)
+                .response();
+
+        assertNotNull(response);
+        assertNotNull(response.getCity());
+        assertNotNull(response.getList());
+        assertEquals(2, response.getCnt());
+        assertEquals(2, response.getList().size());
+        assertEquals("Pero", response.getCity().getName());
+    }
+
+    @Test
+    public void testClimaticWeatherForecastCoordinates() throws RestClientException {
+        var response = openWeatherMapClient.climaticWeatherForecast()
+                .coordinates(45.5101617, 9.0894415)
+                .cnt(4)
+                .units(Unit.METRIC)
+                .lang(Lang.ITALIAN)
+                .response();
+
+        assertNotNull(response);
+        assertNotNull(response.getCity());
+        assertNotNull(response.getList());
+        assertEquals(4, response.getList().size());
+        assertEquals("Zocca", response.getCity().getName());
+    }
+
+    @Test
+    public void testClimaticWeatherForecastCityName() throws RestClientException {
+        var response = openWeatherMapClient.climaticWeatherForecast()
+                .cityName("Zocca", null, "it")
+                .cnt(4)
+                .units(Unit.METRIC)
+                .response();
+
+        assertNotNull(response);
+        assertNotNull(response.getCity());
+        assertNotNull(response.getList());
+        assertEquals(4, response.getList().size());
+        assertEquals("Zocca", response.getCity().getName());
+    }
+
+    @Test
+    public void testClimaticWeatherForecastCityId() throws RestClientException {
+        var response = openWeatherMapClient.climaticWeatherForecast()
+                .cityId(2643743)
+                .cnt(2)
+                .response();
+
+        assertNotNull(response);
+        assertNotNull(response.getCity());
+        assertNotNull(response.getList());
+        assertEquals(2, response.getList().size());
+        assertEquals("London", response.getCity().getName());
+    }
+
+    @Test
+    public void testClimaticWeatherForecastZipCode() throws RestClientException {
+        var response = openWeatherMapClient.climaticWeatherForecast()
+                .zipCode("20016", "it")
+                .cnt(2)
+                .response();
+
+        assertNotNull(response);
+        assertNotNull(response.getCity());
+        assertNotNull(response.getList());
+        assertEquals(2, response.getList().size());
+        assertEquals("Pero", response.getCity().getName());
+    }
+
+    @Test
     public void testCurrentAirPollution() throws RestClientException {
-        var response = openWeatherMapClient.currentAirPollution()
+        var response = openWeatherMapClient.airPollution()
+                .current()
                 .coordinates(45.5101617, 9.0894415)
                 .response();
 
@@ -220,7 +343,8 @@ public class DefaultOpenWeatherMapClientTest {
 
     @Test
     public void testForecastAirPollution() throws RestClientException {
-        var response = openWeatherMapClient.forecastAirPollution()
+        var response = openWeatherMapClient.airPollution()
+                .forecast()
                 .coordinates(45.5101617, 9.0894415)
                 .response();
 
@@ -231,7 +355,8 @@ public class DefaultOpenWeatherMapClientTest {
 
     @Test
     public void testHistoricalAirPollution() throws RestClientException {
-        var response = openWeatherMapClient.historicalAirPollution()
+        var response = openWeatherMapClient.airPollution()
+                .historical()
                 .coordinatesAndTime(45.5101617, 9.0894415, 1606223802, 1606482999)
                 .response();
 

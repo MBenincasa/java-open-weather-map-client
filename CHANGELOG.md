@@ -2,6 +2,15 @@
 
 All significant changes to this project will be documented in this file.
 
+## [0.3.0] - 2024-10-18
+
+### Added
+- **Hourly Forecast (4 days)**: Access detailed weather forecasts at hourly intervals for the next 4 days
+- **Climatic Forecast (30 days)**: Access climatic forecasts at daily intervals for the next 30 days.
+
+### Changed
+- **Air Pollution API**: Refactored methods for accessing air quality data. Methods have been renamed and organized.
+
 ## [0.2.0] - 2024-09-18
 
 ### Added

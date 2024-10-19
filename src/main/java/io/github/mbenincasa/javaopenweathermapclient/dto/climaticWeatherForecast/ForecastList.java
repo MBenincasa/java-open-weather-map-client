@@ -1,4 +1,4 @@
-package io.github.mbenincasa.javaopenweathermapclient.dto.dailyWeatherForecast;
+package io.github.mbenincasa.javaopenweathermapclient.dto.climaticWeatherForecast;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.mbenincasa.javaopenweathermapclient.dto.common.Weather;
@@ -16,17 +16,16 @@ public class ForecastList {
     private Integer pressure;
     private Integer humidity;
     private List<Weather> weather;
-    private Double speed;
+    private Integer speed;
     private Integer deg;
-    private Double gust;
     private Integer clouds;
-    private Integer pop;
     private Double rain;
+    private Double snow;
 
     public ForecastList() {
     }
 
-    public ForecastList(Integer dt, Integer sunrise, Integer sunset, Temp temp, FeelsLike feelsLike, Integer pressure, Integer humidity, List<Weather> weather, Double speed, Integer deg, Double gust, Integer clouds, Integer pop, Double rain) {
+    public ForecastList(Integer dt, Integer sunrise, Integer sunset, Temp temp, FeelsLike feelsLike, Integer pressure, Integer humidity, List<Weather> weather, Integer speed, Integer deg, Integer clouds, Double rain, Double snow) {
         this.dt = dt;
         this.sunrise = sunrise;
         this.sunset = sunset;
@@ -37,10 +36,9 @@ public class ForecastList {
         this.weather = weather;
         this.speed = speed;
         this.deg = deg;
-        this.gust = gust;
         this.clouds = clouds;
-        this.pop = pop;
         this.rain = rain;
+        this.snow = snow;
     }
 
     public Integer getDt() {
@@ -75,7 +73,7 @@ public class ForecastList {
         return weather;
     }
 
-    public Double getSpeed() {
+    public Integer getSpeed() {
         return speed;
     }
 
@@ -83,20 +81,16 @@ public class ForecastList {
         return deg;
     }
 
-    public Double getGust() {
-        return gust;
-    }
-
     public Integer getClouds() {
         return clouds;
     }
 
-    public Integer getPop() {
-        return pop;
-    }
-
     public Double getRain() {
         return rain;
+    }
+
+    public Double getSnow() {
+        return snow;
     }
 
     @Override
@@ -112,10 +106,9 @@ public class ForecastList {
                 ", weather=" + weather +
                 ", speed=" + speed +
                 ", deg=" + deg +
-                ", gust=" + gust +
                 ", clouds=" + clouds +
-                ", pop=" + pop +
                 ", rain=" + rain +
+                ", snow=" + snow +
                 '}';
     }
 }
