@@ -7,6 +7,7 @@ import io.github.mbenincasa.javaopenweathermapclient.request.weatherForecast.Cli
 import io.github.mbenincasa.javaopenweathermapclient.request.weatherForecast.DailyWeatherForecastRequest;
 import io.github.mbenincasa.javaopenweathermapclient.request.weatherForecast.FiveDaysWeatherForecastRequest;
 import io.github.mbenincasa.javaopenweathermapclient.request.weatherForecast.HourlyWeatherForecastRequest;
+import io.github.mbenincasa.javaopenweathermapclient.request.weatherMaps.BasicWeatherMapRequest;
 
 public interface OpenWeatherMapClient {
 
@@ -23,4 +24,6 @@ public interface OpenWeatherMapClient {
     AirPollutionRequest airPollution();
 
     GeocodingRequest geocoding();
+
+    BasicWeatherMapRequest basicWeatherMap();
 }

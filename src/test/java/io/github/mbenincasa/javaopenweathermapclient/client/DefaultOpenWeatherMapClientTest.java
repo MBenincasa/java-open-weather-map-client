@@ -2,12 +2,12 @@ package io.github.mbenincasa.javaopenweathermapclient.client;
 
 import io.github.mbenincasa.javaopenweathermapclient.request.common.Lang;
 import io.github.mbenincasa.javaopenweathermapclient.request.common.Unit;
+import io.github.mbenincasa.javaopenweathermapclient.request.weatherMaps.BasicMapLayer;
 import io.github.mbenincasa.javarestclient.exception.RestClientException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class DefaultOpenWeatherMapClientTest {
 
@@ -390,5 +390,15 @@ public class DefaultOpenWeatherMapClientTest {
         assertNotNull(response);
         assertEquals("London", response.getName());
         assertEquals("GB", response.getCountry());
+    }
+
+    @Test
+    public void testBasicWeatherMap() throws RestClientException {
+        var response = openWeatherMapClient.basicWeatherMap()
+                .layerAndCoords(BasicMapLayer.PRECIPITATION, 0, 0, 0)
+                .response();
+
+        assertNotNull(response);
+        assertTrue(response.length > 0);
     }
 }

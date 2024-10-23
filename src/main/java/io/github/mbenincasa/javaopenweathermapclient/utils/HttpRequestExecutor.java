@@ -37,4 +37,22 @@ public class HttpRequestExecutor {
                 .retrieve()
                 .getBodyAsList(responseType);
     }
+
+    public static byte[] executeRaw(String baseUrl, Map<String, Object> query, Map<String, Object> pathVar) throws RestClientException {
+        RestClient restClient = new DefaultRestClient();
+        UriBuilder uriBuilder = UriBuilder.create().uri(baseUrl);
+
+        for (Map.Entry<String, Object> entry : query.entrySet()) {
+            uriBuilder.queryParam(entry.getKey(), entry.getValue());
+        }
+
+        for (Map.Entry<String, Object> entry : pathVar.entrySet()) {
+            uriBuilder.pathVariable(entry.getKey(), entry.getValue());
+        }
+
+        return restClient.get()
+                .uri(uriBuilder.build())
+                .retrieve()
+                .getBodyAsRaw();
+    }
 }

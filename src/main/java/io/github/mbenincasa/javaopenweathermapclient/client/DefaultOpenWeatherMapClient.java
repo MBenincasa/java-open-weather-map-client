@@ -7,6 +7,7 @@ import io.github.mbenincasa.javaopenweathermapclient.request.weatherForecast.Cli
 import io.github.mbenincasa.javaopenweathermapclient.request.weatherForecast.DailyWeatherForecastRequest;
 import io.github.mbenincasa.javaopenweathermapclient.request.weatherForecast.FiveDaysWeatherForecastRequest;
 import io.github.mbenincasa.javaopenweathermapclient.request.weatherForecast.HourlyWeatherForecastRequest;
+import io.github.mbenincasa.javaopenweathermapclient.request.weatherMaps.BasicWeatherMapRequest;
 
 public class DefaultOpenWeatherMapClient implements OpenWeatherMapClient {
 
@@ -49,5 +50,10 @@ public class DefaultOpenWeatherMapClient implements OpenWeatherMapClient {
     @Override
     public GeocodingRequest geocoding() {
         return new GeocodingRequest(this.apiKey);
+    }
+
+    @Override
+    public BasicWeatherMapRequest basicWeatherMap() {
+        return new BasicWeatherMapRequest(this.apiKey);
     }
 }
