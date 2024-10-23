@@ -221,7 +221,7 @@ public class DefaultOpenWeatherMapClientTest {
         assertNotNull(response.getList());
         assertEquals(4, response.getCnt());
         assertEquals(4, response.getList().size());
-        assertEquals("Zocca", response.getCity().getName());
+        assertEquals("Pero", response.getCity().getName());
     }
 
     @Test
@@ -283,7 +283,7 @@ public class DefaultOpenWeatherMapClientTest {
         assertNotNull(response.getCity());
         assertNotNull(response.getList());
         assertEquals(4, response.getList().size());
-        assertEquals("Zocca", response.getCity().getName());
+        assertEquals("Pero", response.getCity().getName());
     }
 
     @Test
