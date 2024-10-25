@@ -2,20 +2,21 @@ package io.github.mbenincasa.javaopenweathermapclient.client;
 
 import io.github.mbenincasa.javaopenweathermapclient.request.common.Lang;
 import io.github.mbenincasa.javaopenweathermapclient.request.common.Unit;
+import io.github.mbenincasa.javaopenweathermapclient.request.weatherMaps.AdvancedMapLayer;
 import io.github.mbenincasa.javaopenweathermapclient.request.weatherMaps.BasicMapLayer;
 import io.github.mbenincasa.javarestclient.exception.RestClientException;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class DefaultOpenWeatherMapClientTest {
 
-    private OpenWeatherMapClient openWeatherMapClient;
+    private static OpenWeatherMapClient openWeatherMapClient;
     private final static String API_KEY = "API_KEY";
 
-    @BeforeEach
-    void setUp() {
+    @BeforeAll
+    static void setUp() {
         openWeatherMapClient = new DefaultOpenWeatherMapClient(API_KEY);
     }
 
@@ -396,6 +397,20 @@ public class DefaultOpenWeatherMapClientTest {
     public void testBasicWeatherMap() throws RestClientException {
         var response = openWeatherMapClient.basicWeatherMap()
                 .layerAndCoords(BasicMapLayer.PRECIPITATION, 0, 0, 0)
+                .response();
+
+        assertNotNull(response);
+        assertTrue(response.length > 0);
+    }
+
+    @Test
+    public void testAdvancedWeatherMap() throws RestClientException {
+        var response = openWeatherMapClient.advancedWeatherMap()
+                .layerAndCoords(AdvancedMapLayer.AIR_TEMPERATURE, 0, 0, 0)
+                .date(1552861800)
+                .opacity(0.6)
+                .palette("0:FF8800;10:88FF88;20:0088FF")
+                .fillBound(true)
                 .response();
 
         assertNotNull(response);

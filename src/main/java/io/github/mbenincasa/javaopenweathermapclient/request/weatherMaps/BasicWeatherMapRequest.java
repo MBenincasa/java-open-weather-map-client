@@ -19,6 +19,7 @@ public class BasicWeatherMapRequest {
     }
 
     public static class Builder {
+
         private final Map<String, Object> query;
         private final Map<String, Object> pathVar;
 
