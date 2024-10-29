@@ -8,15 +8,19 @@ public class City {
     private String name;
     private Coord coord;
     private String country;
+    private Integer population;
+    private Integer timezone;
 
     public City() {
     }
 
-    public City(Integer id, String name, Coord coord, String country) {
+    public City(Integer id, String name, Coord coord, String country, Integer population, Integer timezone) {
         this.id = id;
         this.name = name;
         this.coord = coord;
         this.country = country;
+        this.population = population;
+        this.timezone = timezone;
     }
 
     public Integer getId() {
@@ -35,6 +39,14 @@ public class City {
         return country;
     }
 
+    public Integer getPopulation() {
+        return population;
+    }
+
+    public Integer getTimezone() {
+        return timezone;
+    }
+
     @Override
     public String toString() {
         return "City{" +
@@ -42,6 +54,8 @@ public class City {
                 ", name='" + name + '\'' +
                 ", coord=" + coord +
                 ", country='" + country + '\'' +
+                ", population=" + population +
+                ", timezone=" + timezone +
                 '}';
     }
 }

@@ -7,23 +7,25 @@ import java.util.List;
 
 public class ClimaticWeatherForecastDTO {
 
-    private String cod;
+    private String code;
     private City city;
     private String message;
+    private Integer cnt;
     private List<ForecastList> list;
 
     public ClimaticWeatherForecastDTO() {
     }
 
-    public ClimaticWeatherForecastDTO(String cod, City city, String message, List<ForecastList> list) {
-        this.cod = cod;
+    public ClimaticWeatherForecastDTO(String code, City city, String message, Integer cnt, List<ForecastList> list) {
+        this.code = code;
         this.city = city;
         this.message = message;
+        this.cnt = cnt;
         this.list = list;
     }
 
-    public String getCod() {
-        return cod;
+    public String getCode() {
+        return code;
     }
 
     public City getCity() {
@@ -34,6 +36,10 @@ public class ClimaticWeatherForecastDTO {
         return message;
     }
 
+    public Integer getCnt() {
+        return cnt;
+    }
+
     public List<ForecastList> getList() {
         return list;
     }
@@ -41,9 +47,10 @@ public class ClimaticWeatherForecastDTO {
     @Override
     public String toString() {
         return "ClimaticWeatherForecastDTO{" +
-                "cod='" + cod + '\'' +
+                "code='" + code + '\'' +
                 ", city=" + city +
                 ", message='" + message + '\'' +
+                ", cnt=" + cnt +
                 ", list=" + list +
                 '}';
     }

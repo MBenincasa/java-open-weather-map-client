@@ -1,22 +1,27 @@
 package io.github.mbenincasa.javaopenweathermapclient.client;
 
+import io.github.mbenincasa.javaopenweathermapclient.exception.OpenWeatherMapException;
 import io.github.mbenincasa.javaopenweathermapclient.request.common.Lang;
 import io.github.mbenincasa.javaopenweathermapclient.request.common.Unit;
+import io.github.mbenincasa.javaopenweathermapclient.request.weatherMaps.AdvancedMapLayer;
+import io.github.mbenincasa.javaopenweathermapclient.request.weatherMaps.BasicMapLayer;
 import io.github.mbenincasa.javarestclient.exception.RestClientException;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class DefaultOpenWeatherMapClientTest {
 
-    private OpenWeatherMapClient openWeatherMapClient;
+    private static OpenWeatherMapClient openWeatherMapClient;
+    private static OpenWeatherMapClient openWeatherMapClientUnauthorized;
     private final static String API_KEY = "API_KEY";
+    private final static String API_KEY_NOT_CORRECT = "not-correct";
 
-    @BeforeEach
-    void setUp() {
+    @BeforeAll
+    static void setUp() {
         openWeatherMapClient = new DefaultOpenWeatherMapClient(API_KEY);
+        openWeatherMapClientUnauthorized = new DefaultOpenWeatherMapClient(API_KEY_NOT_CORRECT);
     }
 
     @Test
@@ -221,7 +226,7 @@ public class DefaultOpenWeatherMapClientTest {
         assertNotNull(response.getList());
         assertEquals(4, response.getCnt());
         assertEquals(4, response.getList().size());
-        assertEquals("Zocca", response.getCity().getName());
+        assertEquals("Pero", response.getCity().getName());
     }
 
     @Test
@@ -283,7 +288,7 @@ public class DefaultOpenWeatherMapClientTest {
         assertNotNull(response.getCity());
         assertNotNull(response.getList());
         assertEquals(4, response.getList().size());
-        assertEquals("Zocca", response.getCity().getName());
+        assertEquals("Pero", response.getCity().getName());
     }
 
     @Test
@@ -390,5 +395,59 @@ public class DefaultOpenWeatherMapClientTest {
         assertNotNull(response);
         assertEquals("London", response.getName());
         assertEquals("GB", response.getCountry());
+    }
+
+    @Test
+    public void testBasicWeatherMap() throws RestClientException {
+        var response = openWeatherMapClient.basicWeatherMap()
+                .layerAndCoords(BasicMapLayer.PRECIPITATION, 0, 0, 0)
+                .response();
+
+        assertNotNull(response);
+        assertTrue(response.length > 0);
+    }
+
+    @Test
+    public void testAdvancedWeatherMap() throws RestClientException {
+        var response = openWeatherMapClient.advancedWeatherMap()
+                .layerAndCoords(AdvancedMapLayer.AIR_TEMPERATURE, 0, 0, 0)
+                .date(1552861800)
+                .opacity(0.6)
+                .palette("0:FF8800;10:88FF88;20:0088FF")
+                .fillBound(true)
+                .response();
+
+        assertNotNull(response);
+        assertTrue(response.length > 0);
+    }
+
+    @Test
+    public void testRequestUnauthorized() {
+        var requestBuilder = openWeatherMapClientUnauthorized.currentWeather()
+                .coordinates(45.5101617, 9.0894415)
+                .units(Unit.METRIC)
+                .lang(Lang.ITALIAN);
+
+        assertThrows(OpenWeatherMapException.class, requestBuilder::response);
+    }
+
+    @Test
+    public void testRequestBadRequest() {
+        var requestBuilder = openWeatherMapClient.currentWeather()
+                .coordinates(15951.3, 159.1)
+                .units(Unit.METRIC)
+                .lang(Lang.ITALIAN);
+
+        assertThrows(OpenWeatherMapException.class, requestBuilder::response);
+    }
+
+    @Test
+    public void testRequestNotFound() {
+        var requestBuilder = openWeatherMapClient.currentWeather()
+                .cityName("asdsa", null, null)
+                .units(Unit.METRIC)
+                .lang(Lang.ITALIAN);
+
+        assertThrows(OpenWeatherMapException.class, requestBuilder::response);
     }
 }

@@ -2,6 +2,21 @@
 
 All significant changes to this project will be documented in this file.
 
+## [0.4.0] - 2024-10-29
+
+### Added
+- **Basic weather maps**: Provides many kinds of weather maps including Precipitation, Clouds, Pressure, Temperature, Wind.
+- **Advanced weather maps**: Forecast, Historical and Current weather maps. 15 weather map layers.
+- **Error handling**: Implemented a method to manage HTTP request errors, providing clearer feedback on API response issues.
+
+### Fixed
+- Corrected the structure of `ClimaticWeatherForecastDTO` to resolve deserialization errors.
+
+### Dependencies Updated
+- Updated `io.github.mbenincasa:java-rest-client` from **0.3.1** to **0.3.3**
+- Updated `org.junit.jupiter:junit-jupiter` from **5.10.3** to **5.11.3**
+- Updated `org.junit.platform:junit-platform-suite-engine` from **1.10.3** to **1.11.3**
+
 ## [0.3.0] - 2024-10-18
 
 ### Added
