@@ -1,5 +1,6 @@
 package io.github.mbenincasa.javaopenweathermapclient.client;
 
+import io.github.mbenincasa.javaopenweathermapclient.exception.OpenWeatherMapException;
 import io.github.mbenincasa.javaopenweathermapclient.request.common.Lang;
 import io.github.mbenincasa.javaopenweathermapclient.request.common.Unit;
 import io.github.mbenincasa.javaopenweathermapclient.request.weatherMaps.AdvancedMapLayer;
@@ -13,11 +14,14 @@ import static org.junit.jupiter.api.Assertions.*;
 public class DefaultOpenWeatherMapClientTest {
 
     private static OpenWeatherMapClient openWeatherMapClient;
+    private static OpenWeatherMapClient openWeatherMapClientUnauthorized;
     private final static String API_KEY = "API_KEY";
+    private final static String API_KEY_NOT_CORRECT = "not-correct";
 
     @BeforeAll
     static void setUp() {
         openWeatherMapClient = new DefaultOpenWeatherMapClient(API_KEY);
+        openWeatherMapClientUnauthorized = new DefaultOpenWeatherMapClient(API_KEY_NOT_CORRECT);
     }
 
     @Test
@@ -415,5 +419,35 @@ public class DefaultOpenWeatherMapClientTest {
 
         assertNotNull(response);
         assertTrue(response.length > 0);
+    }
+
+    @Test
+    public void testRequestUnauthorized() {
+        var requestBuilder = openWeatherMapClientUnauthorized.currentWeather()
+                .coordinates(45.5101617, 9.0894415)
+                .units(Unit.METRIC)
+                .lang(Lang.ITALIAN);
+
+        assertThrows(OpenWeatherMapException.class, requestBuilder::response);
+    }
+
+    @Test
+    public void testRequestBadRequest() {
+        var requestBuilder = openWeatherMapClient.currentWeather()
+                .coordinates(15951.3, 159.1)
+                .units(Unit.METRIC)
+                .lang(Lang.ITALIAN);
+
+        assertThrows(OpenWeatherMapException.class, requestBuilder::response);
+    }
+
+    @Test
+    public void testRequestNotFound() {
+        var requestBuilder = openWeatherMapClient.currentWeather()
+                .cityName("asdsa", null, null)
+                .units(Unit.METRIC)
+                .lang(Lang.ITALIAN);
+
+        assertThrows(OpenWeatherMapException.class, requestBuilder::response);
     }
 }
