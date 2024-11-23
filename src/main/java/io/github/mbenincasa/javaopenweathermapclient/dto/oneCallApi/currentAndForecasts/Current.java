@@ -1,27 +1,25 @@
-package io.github.mbenincasa.javaopenweathermapclient.dto.oneCallApi;
+package io.github.mbenincasa.javaopenweathermapclient.dto.oneCallApi.currentAndForecasts;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.mbenincasa.javaopenweathermapclient.dto.common.Weather;
 
 import java.util.List;
 
-public class Daily {
+public class Current {
 
     private Integer dt;
     private Integer sunrise;
     private Integer sunset;
-    private Integer moonrise;
-    private Integer moonset;
-    @JsonProperty("moon_phase")
-    private Double moonPhase;
-    private String summary;
-    private Temp temp;
+    private Double temp;
     @JsonProperty("feels_like")
-    private FeelsLike feelsLike;
+    private Double feelsLike;
     private Integer pressure;
     private Integer humidity;
     @JsonProperty("dew_point")
     private Double dewPoint;
+    private Double uvi;
+    private Integer clouds;
+    private Integer visibility;
     @JsonProperty("wind_speed")
     private Double windSpeed;
     @JsonProperty("wind_deg")
@@ -29,37 +27,30 @@ public class Daily {
     @JsonProperty("wind_gust")
     private Double windGust;
     private List<Weather> weather;
-    private Integer clouds;
-    private Double pop;
-    private Double rain;
-    private Double snow;
-    private Double uvi;
+    private Rain rain;
+    private Snow snow;
 
-    public Daily() {
+    public Current() {
     }
 
-    public Daily(Integer dt, Integer sunrise, Integer sunset, Integer moonrise, Integer moonset, Double moonPhase, String summary, Temp temp, FeelsLike feelsLike, Integer pressure, Integer humidity, Double dewPoint, Double windSpeed, Integer windDeg, Double windGust, List<Weather> weather, Integer clouds, Double pop, Double rain, Double snow, Double uvi) {
+    public Current(Integer dt, Integer sunrise, Integer sunset, Double temp, Double feelsLike, Integer pressure, Integer humidity, Double dewPoint, Double uvi, Integer clouds, Integer visibility, Double windSpeed, Integer windDeg, Double windGust, List<Weather> weather, Rain rain, Snow snow) {
         this.dt = dt;
         this.sunrise = sunrise;
         this.sunset = sunset;
-        this.moonrise = moonrise;
-        this.moonset = moonset;
-        this.moonPhase = moonPhase;
-        this.summary = summary;
         this.temp = temp;
         this.feelsLike = feelsLike;
         this.pressure = pressure;
         this.humidity = humidity;
         this.dewPoint = dewPoint;
+        this.uvi = uvi;
+        this.clouds = clouds;
+        this.visibility = visibility;
         this.windSpeed = windSpeed;
         this.windDeg = windDeg;
         this.windGust = windGust;
         this.weather = weather;
-        this.clouds = clouds;
-        this.pop = pop;
         this.rain = rain;
         this.snow = snow;
-        this.uvi = uvi;
     }
 
     public Integer getDt() {
@@ -74,27 +65,11 @@ public class Daily {
         return sunset;
     }
 
-    public Integer getMoonrise() {
-        return moonrise;
-    }
-
-    public Integer getMoonset() {
-        return moonset;
-    }
-
-    public Double getMoonPhase() {
-        return moonPhase;
-    }
-
-    public String getSummary() {
-        return summary;
-    }
-
-    public Temp getTemp() {
+    public Double getTemp() {
         return temp;
     }
 
-    public FeelsLike getFeelsLike() {
+    public Double getFeelsLike() {
         return feelsLike;
     }
 
@@ -108,6 +83,18 @@ public class Daily {
 
     public Double getDewPoint() {
         return dewPoint;
+    }
+
+    public Double getUvi() {
+        return uvi;
+    }
+
+    public Integer getClouds() {
+        return clouds;
+    }
+
+    public Integer getVisibility() {
+        return visibility;
     }
 
     public Double getWindSpeed() {
@@ -126,50 +113,34 @@ public class Daily {
         return weather;
     }
 
-    public Integer getClouds() {
-        return clouds;
-    }
-
-    public Double getPop() {
-        return pop;
-    }
-
-    public Double getRain() {
+    public Rain getRain() {
         return rain;
     }
 
-    public Double getSnow() {
+    public Snow getSnow() {
         return snow;
-    }
-
-    public Double getUvi() {
-        return uvi;
     }
 
     @Override
     public String toString() {
-        return "Daily{" +
+        return "Current{" +
                 "dt=" + dt +
                 ", sunrise=" + sunrise +
                 ", sunset=" + sunset +
-                ", moonrise=" + moonrise +
-                ", moonset=" + moonset +
-                ", moonPhase=" + moonPhase +
-                ", summary='" + summary + '\'' +
                 ", temp=" + temp +
                 ", feelsLike=" + feelsLike +
                 ", pressure=" + pressure +
                 ", humidity=" + humidity +
                 ", dewPoint=" + dewPoint +
+                ", uvi=" + uvi +
+                ", clouds=" + clouds +
+                ", visibility=" + visibility +
                 ", windSpeed=" + windSpeed +
                 ", windDeg=" + windDeg +
                 ", windGust=" + windGust +
                 ", weather=" + weather +
-                ", clouds=" + clouds +
-                ", pop=" + pop +
                 ", rain=" + rain +
                 ", snow=" + snow +
-                ", uvi=" + uvi +
                 '}';
     }
 }

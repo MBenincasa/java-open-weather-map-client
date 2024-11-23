@@ -1,4 +1,4 @@
-package io.github.mbenincasa.javaopenweathermapclient.dto.oneCallApi;
+package io.github.mbenincasa.javaopenweathermapclient.dto.oneCallApi.currentAndForecasts;
 
 public class Minutely {
 

@@ -1,7 +1,7 @@
 package io.github.mbenincasa.javaopenweathermapclient.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.github.mbenincasa.javaopenweathermapclient.dto.oneCallApi.*;
+import io.github.mbenincasa.javaopenweathermapclient.dto.oneCallApi.currentAndForecasts.*;
 
 import java.util.List;
 

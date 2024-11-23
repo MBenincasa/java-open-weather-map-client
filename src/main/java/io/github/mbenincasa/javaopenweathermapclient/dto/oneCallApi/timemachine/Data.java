@@ -1,11 +1,13 @@
-package io.github.mbenincasa.javaopenweathermapclient.dto.oneCallApi;
+package io.github.mbenincasa.javaopenweathermapclient.dto.oneCallApi.timemachine;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.mbenincasa.javaopenweathermapclient.dto.common.Weather;
+import io.github.mbenincasa.javaopenweathermapclient.dto.oneCallApi.currentAndForecasts.Rain;
+import io.github.mbenincasa.javaopenweathermapclient.dto.oneCallApi.currentAndForecasts.Snow;
 
 import java.util.List;
 
-public class Current {
+public class Data {
 
     private Integer dt;
     private Integer sunrise;
@@ -24,16 +26,14 @@ public class Current {
     private Double windSpeed;
     @JsonProperty("wind_deg")
     private Integer windDeg;
-    @JsonProperty("wind_gust")
-    private Double windGust;
     private List<Weather> weather;
     private Rain rain;
     private Snow snow;
 
-    public Current() {
+    public Data() {
     }
 
-    public Current(Integer dt, Integer sunrise, Integer sunset, Double temp, Double feelsLike, Integer pressure, Integer humidity, Double dewPoint, Double uvi, Integer clouds, Integer visibility, Double windSpeed, Integer windDeg, Double windGust, List<Weather> weather, Rain rain, Snow snow) {
+    public Data(Integer dt, Integer sunrise, Integer sunset, Double temp, Double feelsLike, Integer pressure, Integer humidity, Double dewPoint, Double uvi, Integer clouds, Integer visibility, Double windSpeed, Integer windDeg, List<Weather> weather, Rain rain, Snow snow) {
         this.dt = dt;
         this.sunrise = sunrise;
         this.sunset = sunset;
@@ -47,7 +47,6 @@ public class Current {
         this.visibility = visibility;
         this.windSpeed = windSpeed;
         this.windDeg = windDeg;
-        this.windGust = windGust;
         this.weather = weather;
         this.rain = rain;
         this.snow = snow;
@@ -105,10 +104,6 @@ public class Current {
         return windDeg;
     }
 
-    public Double getWindGust() {
-        return windGust;
-    }
-
     public List<Weather> getWeather() {
         return weather;
     }
@@ -123,7 +118,7 @@ public class Current {
 
     @Override
     public String toString() {
-        return "Current{" +
+        return "Data{" +
                 "dt=" + dt +
                 ", sunrise=" + sunrise +
                 ", sunset=" + sunset +
@@ -137,7 +132,6 @@ public class Current {
                 ", visibility=" + visibility +
                 ", windSpeed=" + windSpeed +
                 ", windDeg=" + windDeg +
-                ", windGust=" + windGust +
                 ", weather=" + weather +
                 ", rain=" + rain +
                 ", snow=" + snow +
