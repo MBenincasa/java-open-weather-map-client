@@ -3,6 +3,7 @@ package io.github.mbenincasa.javaopenweathermapclient.client;
 import io.github.mbenincasa.javaopenweathermapclient.exception.OpenWeatherMapException;
 import io.github.mbenincasa.javaopenweathermapclient.request.common.Lang;
 import io.github.mbenincasa.javaopenweathermapclient.request.common.Unit;
+import io.github.mbenincasa.javaopenweathermapclient.request.oneCallApi.OneCallApiExclude;
 import io.github.mbenincasa.javaopenweathermapclient.request.weatherMaps.AdvancedMapLayer;
 import io.github.mbenincasa.javaopenweathermapclient.request.weatherMaps.BasicMapLayer;
 import io.github.mbenincasa.javarestclient.exception.RestClientException;
@@ -422,6 +423,20 @@ public class DefaultOpenWeatherMapClientTest {
     }
 
     @Test
+    public void testOneCallApiCurrentAndForecastsData() throws RestClientException {
+        var response = openWeatherMapClient.oneCallApi()
+                .currentAndForecastsData(45.5101617, 9.0894415)
+                .exclude(OneCallApiExclude.CURRENT, OneCallApiExclude.MINUTELY)
+                .lang(Lang.ITALIAN)
+                .units(Unit.IMPERIAL)
+                .response();
+
+        assertNotNull(response);
+        assertNotNull(response.getHourly());
+        assertNotNull(response.getDaily());
+    }
+
+    @Test
     public void testRequestUnauthorized() {
         var requestBuilder = openWeatherMapClientUnauthorized.currentWeather()
                 .coordinates(45.5101617, 9.0894415)
@@ -450,4 +465,5 @@ public class DefaultOpenWeatherMapClientTest {
 
         assertThrows(OpenWeatherMapException.class, requestBuilder::response);
     }
+
 }

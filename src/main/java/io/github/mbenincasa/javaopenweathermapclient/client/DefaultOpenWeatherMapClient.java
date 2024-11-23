@@ -3,6 +3,7 @@ package io.github.mbenincasa.javaopenweathermapclient.client;
 import io.github.mbenincasa.javaopenweathermapclient.request.airPollution.AirPollutionRequest;
 import io.github.mbenincasa.javaopenweathermapclient.request.currentWeather.CurrentWeatherRequest;
 import io.github.mbenincasa.javaopenweathermapclient.request.geocoding.GeocodingRequest;
+import io.github.mbenincasa.javaopenweathermapclient.request.oneCallApi.OneCallApiRequest;
 import io.github.mbenincasa.javaopenweathermapclient.request.weatherForecast.ClimaticWeatherForecastRequest;
 import io.github.mbenincasa.javaopenweathermapclient.request.weatherForecast.DailyWeatherForecastRequest;
 import io.github.mbenincasa.javaopenweathermapclient.request.weatherForecast.FiveDaysWeatherForecastRequest;
@@ -61,5 +62,10 @@ public class DefaultOpenWeatherMapClient implements OpenWeatherMapClient {
     @Override
     public AdvancedWeatherMapRequest advancedWeatherMap() {
         return new AdvancedWeatherMapRequest(this.apiKey);
+    }
+
+    @Override
+    public OneCallApiRequest oneCallApi() {
+        return new OneCallApiRequest(this.apiKey);
     }
 }
