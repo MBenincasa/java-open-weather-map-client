@@ -1,6 +1,7 @@
 package io.github.mbenincasa.javaopenweathermapclient.request.oneCallApi;
 
 import io.github.mbenincasa.javaopenweathermapclient.dto.OneCallApiCurrentAndForecastsDataDTO;
+import io.github.mbenincasa.javaopenweathermapclient.dto.OneCallApiDaySummaryDTO;
 import io.github.mbenincasa.javaopenweathermapclient.dto.OneCallApiTimemachineDTO;
 import io.github.mbenincasa.javaopenweathermapclient.request.common.Lang;
 import io.github.mbenincasa.javaopenweathermapclient.request.common.Unit;
@@ -26,6 +27,10 @@ public class OneCallApiRequest {
 
     public BuilderTimemachine timemachine(Double lat, Double lon, Integer dt) {
         return new BuilderTimemachine(lat, lon, dt, this.apiKey);
+    }
+
+    public BuilderDailyAggregation daySummary(Double lat, Double lon, Integer dt) {
+        return new BuilderDailyAggregation(lat, lon, dt, this.apiKey);
     }
 
     public static class BuilderCurrentAndForecast {
@@ -93,6 +98,42 @@ public class OneCallApiRequest {
                     "https://api.openweathermap.org/data/3.0/onecall/timemachine",
                     this.query,
                     OneCallApiTimemachineDTO.class
+            );
+        }
+    }
+
+    public static class BuilderDailyAggregation {
+
+        private final Map<String, Object> query;
+
+        private BuilderDailyAggregation(Double lat, Double lon, Integer dt, String apiKey) {
+            this.query = new HashMap<>();
+            this.query.put("appid", apiKey);
+            this.query.put("lat", lat);
+            this.query.put("lon", lon);
+            this.query.put("dt", dt);
+        }
+
+        public BuilderDailyAggregation units(Unit unit) {
+            this.query.put("units", unit.getValue());
+            return this;
+        }
+
+        public BuilderDailyAggregation lang(Lang lang) {
+            this.query.put("lang", lang.getValue());
+            return this;
+        }
+
+        public BuilderDailyAggregation tz(String tz) {
+            this.query.put("tz", tz);
+            return this;
+        }
+
+        public OneCallApiDaySummaryDTO response() throws RestClientException {
+            return HttpRequestExecutor.execute(
+                    /*"https://api.openweathermap.org/data/3.0/onecall/day_summary"*/ "https://run.mocky.io/v3/c665a1ff-f218-40e2-81b1-53078d63066c",
+                    this.query,
+                    OneCallApiDaySummaryDTO.class
             );
         }
     }
