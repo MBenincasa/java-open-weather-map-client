@@ -462,6 +462,18 @@ public class DefaultOpenWeatherMapClientTest {
     }
 
     @Test
+    public void testOneCallApiOverview() throws RestClientException {
+        var response = openWeatherMapClient.oneCallApi()
+                .overview(39.099724, -94.578331)
+                .date("2024-11-22")
+                .units(Unit.IMPERIAL)
+                .response();
+
+        assertNotNull(response);
+        assertNotNull(response.getWeatherOverview());
+    }
+
+    @Test
     public void testRequestUnauthorized() {
         var requestBuilder = openWeatherMapClientUnauthorized.currentWeather()
                 .coordinates(45.5101617, 9.0894415)
