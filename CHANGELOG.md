@@ -2,6 +2,11 @@
 
 All significant changes to this project will be documented in this file.
 
+## [0.5.0] - 2024-11-24
+
+### Added
+- **One Call API 3.0**: Get essential weather data, short-term and long-term forecasts and aggregated weather data.
+
 ## [0.4.0] - 2024-10-29
 
 ### Added

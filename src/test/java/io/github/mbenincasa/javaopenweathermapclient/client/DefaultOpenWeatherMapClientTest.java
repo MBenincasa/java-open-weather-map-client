@@ -3,6 +3,7 @@ package io.github.mbenincasa.javaopenweathermapclient.client;
 import io.github.mbenincasa.javaopenweathermapclient.exception.OpenWeatherMapException;
 import io.github.mbenincasa.javaopenweathermapclient.request.common.Lang;
 import io.github.mbenincasa.javaopenweathermapclient.request.common.Unit;
+import io.github.mbenincasa.javaopenweathermapclient.request.oneCallApi.OneCallApiExclude;
 import io.github.mbenincasa.javaopenweathermapclient.request.weatherMaps.AdvancedMapLayer;
 import io.github.mbenincasa.javaopenweathermapclient.request.weatherMaps.BasicMapLayer;
 import io.github.mbenincasa.javarestclient.exception.RestClientException;
@@ -422,6 +423,57 @@ public class DefaultOpenWeatherMapClientTest {
     }
 
     @Test
+    public void testOneCallApiCurrentAndForecastsData() throws RestClientException {
+        var response = openWeatherMapClient.oneCallApi()
+                .currentAndForecastsData(45.5101617, 9.0894415)
+                .exclude(OneCallApiExclude.CURRENT, OneCallApiExclude.MINUTELY)
+                .lang(Lang.ITALIAN)
+                .units(Unit.IMPERIAL)
+                .response();
+
+        assertNotNull(response);
+        assertNotNull(response.getHourly());
+        assertNotNull(response.getDaily());
+    }
+
+    @Test
+    public void testOneCallApiTimemachine() throws RestClientException {
+        var response = openWeatherMapClient.oneCallApi()
+                .timemachine(39.099724, -94.578331, 1643803200)
+                .lang(Lang.ITALIAN)
+                .units(Unit.IMPERIAL)
+                .response();
+
+        assertNotNull(response);
+        assertNotNull(response.getData());
+    }
+
+    @Test
+    public void testOneCallApiDaySummary() throws RestClientException {
+        var response = openWeatherMapClient.oneCallApi()
+                .daySummary(39.099724, -94.578331, 1643803200)
+                .tz("+01:00")
+                .lang(Lang.ITALIAN)
+                .units(Unit.IMPERIAL)
+                .response();
+
+        assertNotNull(response);
+        assertNotNull(response.getTemperature());
+    }
+
+    @Test
+    public void testOneCallApiOverview() throws RestClientException {
+        var response = openWeatherMapClient.oneCallApi()
+                .overview(39.099724, -94.578331)
+                .date("2024-11-22")
+                .units(Unit.IMPERIAL)
+                .response();
+
+        assertNotNull(response);
+        assertNotNull(response.getWeatherOverview());
+    }
+
+    @Test
     public void testRequestUnauthorized() {
         var requestBuilder = openWeatherMapClientUnauthorized.currentWeather()
                 .coordinates(45.5101617, 9.0894415)
@@ -450,4 +502,5 @@ public class DefaultOpenWeatherMapClientTest {
 
         assertThrows(OpenWeatherMapException.class, requestBuilder::response);
     }
+
 }
