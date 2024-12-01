@@ -474,6 +474,16 @@ public class DefaultOpenWeatherMapClientTest {
     }
 
     @Test
+    public void testBulkDownload() throws RestClientException {
+        var response = openWeatherMapClient.bulk()
+                .download("weather_16.json.gz")
+                .response();
+
+        assertNotNull(response);
+        assertTrue(response.length > 0);
+    }
+
+    @Test
     public void testRequestUnauthorized() {
         var requestBuilder = openWeatherMapClientUnauthorized.currentWeather()
                 .coordinates(45.5101617, 9.0894415)
