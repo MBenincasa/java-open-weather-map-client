@@ -46,7 +46,7 @@ Java 17 or above.
 - org.junit.platform:junit-platform-suite-engine:jar:1.11.3
 
 ## Maven Dependency
-To include this library in your Maven project, add the following dependency to your `pom.xml`:
+Currently, the library is hosted on GitHub Packages. To include this library in your Maven project, add the following dependency and repository to your `pom.xml`:
 
 ```xml
 <dependency>
@@ -54,6 +54,15 @@ To include this library in your Maven project, add the following dependency to y
   <artifactId>java-open-weather-map-client</artifactId>
   <version>0.5.0</version>
 </dependency>
+```
+
+```xml
+<repositories>
+  <repository>
+    <id>github</id>
+    <url>https://maven.pkg.github.com/MBenincasa/java-open-weather-map-client</url>
+  </repository>
+</repositories>
 ```
 
 ## Documentation
