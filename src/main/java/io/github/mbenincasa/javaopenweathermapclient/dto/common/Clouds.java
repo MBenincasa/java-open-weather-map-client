@@ -1,5 +1,7 @@
 package io.github.mbenincasa.javaopenweathermapclient.dto.common;
 
+import java.util.Objects;
+
 public class Clouds {
 
     private Integer all;
@@ -20,5 +22,17 @@ public class Clouds {
         return "Clouds{" +
                 "all=" + all +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Clouds clouds)) return false;
+        return Objects.equals(getAll(), clouds.getAll());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getAll());
     }
 }

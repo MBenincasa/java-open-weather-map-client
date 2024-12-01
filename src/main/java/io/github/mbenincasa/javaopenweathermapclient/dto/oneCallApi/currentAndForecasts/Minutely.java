@@ -1,5 +1,7 @@
 package io.github.mbenincasa.javaopenweathermapclient.dto.oneCallApi.currentAndForecasts;
 
+import java.util.Objects;
+
 public class Minutely {
 
     private Integer dt;
@@ -27,5 +29,17 @@ public class Minutely {
                 "dt=" + dt +
                 ", precipitation=" + precipitation +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Minutely minutely)) return false;
+        return Objects.equals(getDt(), minutely.getDt()) && Objects.equals(getPrecipitation(), minutely.getPrecipitation());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getDt(), getPrecipitation());
     }
 }

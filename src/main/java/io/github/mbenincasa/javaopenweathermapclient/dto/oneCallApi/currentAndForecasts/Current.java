@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.mbenincasa.javaopenweathermapclient.dto.common.Weather;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Current {
 
@@ -142,5 +143,17 @@ public class Current {
                 ", rain=" + rain +
                 ", snow=" + snow +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Current current)) return false;
+        return Objects.equals(getDt(), current.getDt()) && Objects.equals(getSunrise(), current.getSunrise()) && Objects.equals(getSunset(), current.getSunset()) && Objects.equals(getTemp(), current.getTemp()) && Objects.equals(getFeelsLike(), current.getFeelsLike()) && Objects.equals(getPressure(), current.getPressure()) && Objects.equals(getHumidity(), current.getHumidity()) && Objects.equals(getDewPoint(), current.getDewPoint()) && Objects.equals(getUvi(), current.getUvi()) && Objects.equals(getClouds(), current.getClouds()) && Objects.equals(getVisibility(), current.getVisibility()) && Objects.equals(getWindSpeed(), current.getWindSpeed()) && Objects.equals(getWindDeg(), current.getWindDeg()) && Objects.equals(getWindGust(), current.getWindGust()) && Objects.equals(getWeather(), current.getWeather()) && Objects.equals(getRain(), current.getRain()) && Objects.equals(getSnow(), current.getSnow());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getDt(), getSunrise(), getSunset(), getTemp(), getFeelsLike(), getPressure(), getHumidity(), getDewPoint(), getUvi(), getClouds(), getVisibility(), getWindSpeed(), getWindDeg(), getWindGust(), getWeather(), getRain(), getSnow());
     }
 }

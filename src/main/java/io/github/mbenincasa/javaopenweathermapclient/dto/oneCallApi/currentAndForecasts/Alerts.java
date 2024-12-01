@@ -3,6 +3,7 @@ package io.github.mbenincasa.javaopenweathermapclient.dto.oneCallApi.currentAndF
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Alerts {
 
@@ -60,5 +61,17 @@ public class Alerts {
                 ", description='" + description + '\'' +
                 ", tags=" + tags +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Alerts alerts)) return false;
+        return Objects.equals(getSenderName(), alerts.getSenderName()) && Objects.equals(getEvent(), alerts.getEvent()) && Objects.equals(getStart(), alerts.getStart()) && Objects.equals(getEnd(), alerts.getEnd()) && Objects.equals(getDescription(), alerts.getDescription()) && Objects.equals(tags, alerts.tags);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getSenderName(), getEvent(), getStart(), getEnd(), getDescription(), tags);
     }
 }

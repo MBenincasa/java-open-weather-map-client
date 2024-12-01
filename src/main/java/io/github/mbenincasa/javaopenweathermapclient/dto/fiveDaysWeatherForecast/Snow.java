@@ -2,6 +2,8 @@ package io.github.mbenincasa.javaopenweathermapclient.dto.fiveDaysWeatherForecas
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.Objects;
+
 public class Snow {
 
     @JsonProperty("3h")
@@ -23,5 +25,17 @@ public class Snow {
         return "Snow{" +
                 "threeH=" + threeH +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Snow snow)) return false;
+        return Objects.equals(getThreeH(), snow.getThreeH());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getThreeH());
     }
 }

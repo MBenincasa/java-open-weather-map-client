@@ -3,6 +3,8 @@ package io.github.mbenincasa.javaopenweathermapclient.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.mbenincasa.javaopenweathermapclient.dto.geocoding.LocalNames;
 
+import java.util.Objects;
+
 public class GeocodingLocationDTO {
 
     private String name;
@@ -59,5 +61,17 @@ public class GeocodingLocationDTO {
                 ", country='" + country + '\'' +
                 ", state='" + state + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof GeocodingLocationDTO that)) return false;
+        return Objects.equals(getName(), that.getName()) && Objects.equals(getLocalNames(), that.getLocalNames()) && Objects.equals(getLat(), that.getLat()) && Objects.equals(getLon(), that.getLon()) && Objects.equals(getCountry(), that.getCountry()) && Objects.equals(getState(), that.getState());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName(), getLocalNames(), getLat(), getLon(), getCountry(), getState());
     }
 }

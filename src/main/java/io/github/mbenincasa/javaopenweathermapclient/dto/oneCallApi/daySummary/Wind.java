@@ -1,5 +1,7 @@
 package io.github.mbenincasa.javaopenweathermapclient.dto.oneCallApi.daySummary;
 
+import java.util.Objects;
+
 public class Wind {
 
     private Max max;
@@ -49,6 +51,18 @@ public class Wind {
                     "speed=" + speed +
                     ", direction=" + direction +
                     '}';
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (!(o instanceof Max max)) return false;
+            return Objects.equals(getSpeed(), max.getSpeed()) && Objects.equals(getDirection(), max.getDirection());
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(getSpeed(), getDirection());
         }
     }
 }

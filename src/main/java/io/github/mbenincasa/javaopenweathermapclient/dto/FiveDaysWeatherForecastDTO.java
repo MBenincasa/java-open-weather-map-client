@@ -4,6 +4,7 @@ import io.github.mbenincasa.javaopenweathermapclient.dto.fiveDaysWeatherForecast
 import io.github.mbenincasa.javaopenweathermapclient.dto.fiveDaysWeatherForecast.ForecastList;
 
 import java.util.List;
+import java.util.Objects;
 
 public class FiveDaysWeatherForecastDTO {
 
@@ -53,5 +54,17 @@ public class FiveDaysWeatherForecastDTO {
                 ", list=" + list +
                 ", city=" + city +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof FiveDaysWeatherForecastDTO that)) return false;
+        return Objects.equals(getCod(), that.getCod()) && Objects.equals(getMessage(), that.getMessage()) && Objects.equals(getCnt(), that.getCnt()) && Objects.equals(getList(), that.getList()) && Objects.equals(getCity(), that.getCity());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getCod(), getMessage(), getCnt(), getList(), getCity());
     }
 }

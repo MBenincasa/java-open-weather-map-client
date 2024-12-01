@@ -1,5 +1,7 @@
 package io.github.mbenincasa.javaopenweathermapclient.dto.common;
 
+import java.util.Objects;
+
 public class Weather {
 
     private Integer id;
@@ -41,5 +43,17 @@ public class Weather {
                 ", description='" + description + '\'' +
                 ", icon='" + icon + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Weather weather)) return false;
+        return Objects.equals(getId(), weather.getId()) && Objects.equals(getMain(), weather.getMain()) && Objects.equals(getDescription(), weather.getDescription()) && Objects.equals(getIcon(), weather.getIcon());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getMain(), getDescription(), getIcon());
     }
 }

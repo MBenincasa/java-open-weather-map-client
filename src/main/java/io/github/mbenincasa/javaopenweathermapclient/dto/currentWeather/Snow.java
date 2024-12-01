@@ -2,6 +2,8 @@ package io.github.mbenincasa.javaopenweathermapclient.dto.currentWeather;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.Objects;
+
 public class Snow {
 
     @JsonProperty("1h")
@@ -31,5 +33,17 @@ public class Snow {
                 "oneH=" + oneH +
                 ", threeH=" + threeH +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Snow snow)) return false;
+        return Objects.equals(getOneH(), snow.getOneH()) && Objects.equals(getThreeH(), snow.getThreeH());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getOneH(), getThreeH());
     }
 }

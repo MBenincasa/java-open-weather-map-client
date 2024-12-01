@@ -3,6 +3,8 @@ package io.github.mbenincasa.javaopenweathermapclient.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.mbenincasa.javaopenweathermapclient.dto.oneCallApi.daySummary.*;
 
+import java.util.Objects;
+
 public class OneCallApiDaySummaryDTO {
 
     private Double lat;
@@ -94,5 +96,17 @@ public class OneCallApiDaySummaryDTO {
                 ", pressure=" + pressure +
                 ", wind=" + wind +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof OneCallApiDaySummaryDTO that)) return false;
+        return Objects.equals(getLat(), that.getLat()) && Objects.equals(getLon(), that.getLon()) && Objects.equals(getTz(), that.getTz()) && Objects.equals(getDate(), that.getDate()) && Objects.equals(getUnits(), that.getUnits()) && Objects.equals(getCloudCover(), that.getCloudCover()) && Objects.equals(getHumidity(), that.getHumidity()) && Objects.equals(getPrecipitation(), that.getPrecipitation()) && Objects.equals(getTemperature(), that.getTemperature()) && Objects.equals(getPressure(), that.getPressure()) && Objects.equals(getWind(), that.getWind());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getLat(), getLon(), getTz(), getDate(), getUnits(), getCloudCover(), getHumidity(), getPrecipitation(), getTemperature(), getPressure(), getWind());
     }
 }

@@ -1,5 +1,7 @@
 package io.github.mbenincasa.javaopenweathermapclient.dto.oneCallApi.daySummary;
 
+import java.util.Objects;
+
 public class Humidity {
 
     private Integer afternoon;
@@ -20,5 +22,17 @@ public class Humidity {
         return "Humidity{" +
                 "afternoon=" + afternoon +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Humidity humidity)) return false;
+        return Objects.equals(getAfternoon(), humidity.getAfternoon());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getAfternoon());
     }
 }

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.mbenincasa.javaopenweathermapclient.dto.oneCallApi.currentAndForecasts.*;
 
 import java.util.List;
+import java.util.Objects;
 
 public class OneCallApiCurrentAndForecastsDataDTO {
 
@@ -82,5 +83,17 @@ public class OneCallApiCurrentAndForecastsDataDTO {
                 ", daily=" + daily +
                 ", alerts=" + alerts +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof OneCallApiCurrentAndForecastsDataDTO that)) return false;
+        return Objects.equals(getLat(), that.getLat()) && Objects.equals(getLon(), that.getLon()) && Objects.equals(getTimezone(), that.getTimezone()) && Objects.equals(getTimezoneOffset(), that.getTimezoneOffset()) && Objects.equals(getCurrent(), that.getCurrent()) && Objects.equals(getMinutely(), that.getMinutely()) && Objects.equals(getHourly(), that.getHourly()) && Objects.equals(getDaily(), that.getDaily()) && Objects.equals(getAlerts(), that.getAlerts());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getLat(), getLon(), getTimezone(), getTimezoneOffset(), getCurrent(), getMinutely(), getHourly(), getDaily(), getAlerts());
     }
 }

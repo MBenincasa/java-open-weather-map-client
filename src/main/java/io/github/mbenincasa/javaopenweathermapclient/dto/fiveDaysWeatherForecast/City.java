@@ -2,6 +2,8 @@ package io.github.mbenincasa.javaopenweathermapclient.dto.fiveDaysWeatherForecas
 
 import io.github.mbenincasa.javaopenweathermapclient.dto.common.Coord;
 
+import java.util.Objects;
+
 public class City {
 
     private Integer id;
@@ -71,5 +73,17 @@ public class City {
                 ", sunrise=" + sunrise +
                 ", sunset=" + sunset +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof City city)) return false;
+        return Objects.equals(getId(), city.getId()) && Objects.equals(getName(), city.getName()) && Objects.equals(getCoord(), city.getCoord()) && Objects.equals(getCountry(), city.getCountry()) && Objects.equals(getPopulation(), city.getPopulation()) && Objects.equals(getTimezone(), city.getTimezone()) && Objects.equals(getSunrise(), city.getSunrise()) && Objects.equals(getSunset(), city.getSunset());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getName(), getCoord(), getCountry(), getPopulation(), getTimezone(), getSunrise(), getSunset());
     }
 }

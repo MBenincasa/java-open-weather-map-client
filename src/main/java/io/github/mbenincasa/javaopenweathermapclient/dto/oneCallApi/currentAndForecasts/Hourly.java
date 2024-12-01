@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.mbenincasa.javaopenweathermapclient.dto.common.Weather;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Hourly {
 
@@ -135,5 +136,17 @@ public class Hourly {
                 ", snow=" + snow +
                 ", pop=" + pop +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Hourly hourly)) return false;
+        return Objects.equals(getDt(), hourly.getDt()) && Objects.equals(getTemp(), hourly.getTemp()) && Objects.equals(getFeelsLike(), hourly.getFeelsLike()) && Objects.equals(getPressure(), hourly.getPressure()) && Objects.equals(getHumidity(), hourly.getHumidity()) && Objects.equals(getDewPoint(), hourly.getDewPoint()) && Objects.equals(getUvi(), hourly.getUvi()) && Objects.equals(getClouds(), hourly.getClouds()) && Objects.equals(getVisibility(), hourly.getVisibility()) && Objects.equals(getWindSpeed(), hourly.getWindSpeed()) && Objects.equals(getWindDeg(), hourly.getWindDeg()) && Objects.equals(getWindGust(), hourly.getWindGust()) && Objects.equals(getWeather(), hourly.getWeather()) && Objects.equals(getRain(), hourly.getRain()) && Objects.equals(getSnow(), hourly.getSnow()) && Objects.equals(getPop(), hourly.getPop());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getDt(), getTemp(), getFeelsLike(), getPressure(), getHumidity(), getDewPoint(), getUvi(), getClouds(), getVisibility(), getWindSpeed(), getWindDeg(), getWindGust(), getWeather(), getRain(), getSnow(), getPop());
     }
 }

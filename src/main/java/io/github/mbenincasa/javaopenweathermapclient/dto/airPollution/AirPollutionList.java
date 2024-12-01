@@ -1,5 +1,7 @@
 package io.github.mbenincasa.javaopenweathermapclient.dto.airPollution;
 
+import java.util.Objects;
+
 public class AirPollutionList {
 
     private Integer dt;
@@ -34,5 +36,17 @@ public class AirPollutionList {
                 ", main=" + main +
                 ", components=" + components +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof AirPollutionList that)) return false;
+        return Objects.equals(getDt(), that.getDt()) && Objects.equals(getMain(), that.getMain()) && Objects.equals(getComponents(), that.getComponents());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getDt(), getMain(), getComponents());
     }
 }

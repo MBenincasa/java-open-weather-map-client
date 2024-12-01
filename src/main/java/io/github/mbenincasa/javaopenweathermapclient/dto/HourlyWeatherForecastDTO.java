@@ -4,6 +4,7 @@ import io.github.mbenincasa.javaopenweathermapclient.dto.hourlyWeatherForecast.C
 import io.github.mbenincasa.javaopenweathermapclient.dto.hourlyWeatherForecast.ForecastList;
 
 import java.util.List;
+import java.util.Objects;
 
 public class HourlyWeatherForecastDTO {
 
@@ -53,5 +54,17 @@ public class HourlyWeatherForecastDTO {
                 ", list=" + list +
                 ", city=" + city +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof HourlyWeatherForecastDTO that)) return false;
+        return Objects.equals(getCod(), that.getCod()) && Objects.equals(getMessage(), that.getMessage()) && Objects.equals(getCnt(), that.getCnt()) && Objects.equals(getList(), that.getList()) && Objects.equals(getCity(), that.getCity());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getCod(), getMessage(), getCnt(), getList(), getCity());
     }
 }

@@ -1,5 +1,7 @@
 package io.github.mbenincasa.javaopenweathermapclient.dto.dailyWeatherForecast;
 
+import java.util.Objects;
+
 public class FeelsLike {
 
     private Double day;
@@ -41,5 +43,17 @@ public class FeelsLike {
                 ", eve=" + eve +
                 ", morn=" + morn +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof FeelsLike feelsLike)) return false;
+        return Objects.equals(getDay(), feelsLike.getDay()) && Objects.equals(getNight(), feelsLike.getNight()) && Objects.equals(getEve(), feelsLike.getEve()) && Objects.equals(getMorn(), feelsLike.getMorn());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getDay(), getNight(), getEve(), getMorn());
     }
 }

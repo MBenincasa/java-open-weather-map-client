@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.mbenincasa.javaopenweathermapclient.dto.common.Weather;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Daily {
 
@@ -171,5 +172,17 @@ public class Daily {
                 ", snow=" + snow +
                 ", uvi=" + uvi +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Daily daily)) return false;
+        return Objects.equals(getDt(), daily.getDt()) && Objects.equals(getSunrise(), daily.getSunrise()) && Objects.equals(getSunset(), daily.getSunset()) && Objects.equals(getMoonrise(), daily.getMoonrise()) && Objects.equals(getMoonset(), daily.getMoonset()) && Objects.equals(getMoonPhase(), daily.getMoonPhase()) && Objects.equals(getSummary(), daily.getSummary()) && Objects.equals(getTemp(), daily.getTemp()) && Objects.equals(getFeelsLike(), daily.getFeelsLike()) && Objects.equals(getPressure(), daily.getPressure()) && Objects.equals(getHumidity(), daily.getHumidity()) && Objects.equals(getDewPoint(), daily.getDewPoint()) && Objects.equals(getWindSpeed(), daily.getWindSpeed()) && Objects.equals(getWindDeg(), daily.getWindDeg()) && Objects.equals(getWindGust(), daily.getWindGust()) && Objects.equals(getWeather(), daily.getWeather()) && Objects.equals(getClouds(), daily.getClouds()) && Objects.equals(getPop(), daily.getPop()) && Objects.equals(getRain(), daily.getRain()) && Objects.equals(getSnow(), daily.getSnow()) && Objects.equals(getUvi(), daily.getUvi());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getDt(), getSunrise(), getSunset(), getMoonrise(), getMoonset(), getMoonPhase(), getSummary(), getTemp(), getFeelsLike(), getPressure(), getHumidity(), getDewPoint(), getWindSpeed(), getWindDeg(), getWindGust(), getWeather(), getClouds(), getPop(), getRain(), getSnow(), getUvi());
     }
 }

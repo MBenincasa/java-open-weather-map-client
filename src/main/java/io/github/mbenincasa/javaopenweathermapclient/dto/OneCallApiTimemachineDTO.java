@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.mbenincasa.javaopenweathermapclient.dto.oneCallApi.timemachine.Data;
 
 import java.util.List;
+import java.util.Objects;
 
 public class OneCallApiTimemachineDTO {
 
@@ -54,5 +55,17 @@ public class OneCallApiTimemachineDTO {
                 ", timezoneOffset=" + timezoneOffset +
                 ", data=" + data +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof OneCallApiTimemachineDTO that)) return false;
+        return Objects.equals(getLat(), that.getLat()) && Objects.equals(getLon(), that.getLon()) && Objects.equals(getTimezone(), that.getTimezone()) && Objects.equals(getTimezoneOffset(), that.getTimezoneOffset()) && Objects.equals(getData(), that.getData());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getLat(), getLon(), getTimezone(), getTimezoneOffset(), getData());
     }
 }

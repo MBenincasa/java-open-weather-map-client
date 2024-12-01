@@ -1,5 +1,7 @@
 package io.github.mbenincasa.javaopenweathermapclient.dto.climaticWeatherForecast;
 
+import java.util.Objects;
+
 public class Temp {
 
     private Double day;
@@ -55,5 +57,17 @@ public class Temp {
                 ", eve=" + eve +
                 ", morn=" + morn +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Temp temp)) return false;
+        return Objects.equals(getDay(), temp.getDay()) && Objects.equals(getMin(), temp.getMin()) && Objects.equals(getMax(), temp.getMax()) && Objects.equals(getNight(), temp.getNight()) && Objects.equals(getEve(), temp.getEve()) && Objects.equals(getMorn(), temp.getMorn());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getDay(), getMin(), getMax(), getNight(), getEve(), getMorn());
     }
 }

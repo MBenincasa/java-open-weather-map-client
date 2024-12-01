@@ -2,6 +2,8 @@ package io.github.mbenincasa.javaopenweathermapclient.dto.common;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.Objects;
+
 public class Main {
 
     private Double temp;
@@ -84,5 +86,17 @@ public class Main {
                 ", grndLevel=" + grndLevel +
                 ", tempKf=" + tempKf +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Main main)) return false;
+        return Objects.equals(getTemp(), main.getTemp()) && Objects.equals(getFeelsLike(), main.getFeelsLike()) && Objects.equals(getTempMin(), main.getTempMin()) && Objects.equals(getTempMax(), main.getTempMax()) && Objects.equals(getPressure(), main.getPressure()) && Objects.equals(getHumidity(), main.getHumidity()) && Objects.equals(getSeaLevel(), main.getSeaLevel()) && Objects.equals(getGrndLevel(), main.getGrndLevel()) && Objects.equals(getTempKf(), main.getTempKf());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getTemp(), getFeelsLike(), getTempMin(), getTempMax(), getPressure(), getHumidity(), getSeaLevel(), getGrndLevel(), getTempKf());
     }
 }

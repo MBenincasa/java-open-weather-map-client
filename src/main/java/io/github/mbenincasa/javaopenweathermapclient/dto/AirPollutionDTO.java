@@ -4,6 +4,7 @@ import io.github.mbenincasa.javaopenweathermapclient.dto.airPollution.AirPolluti
 import io.github.mbenincasa.javaopenweathermapclient.dto.common.Coord;
 
 import java.util.List;
+import java.util.Objects;
 
 public class AirPollutionDTO {
 
@@ -32,5 +33,17 @@ public class AirPollutionDTO {
                 "coord=" + coord +
                 ", list=" + list +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof AirPollutionDTO that)) return false;
+        return Objects.equals(getCoord(), that.getCoord()) && Objects.equals(getList(), that.getList());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getCoord(), getList());
     }
 }

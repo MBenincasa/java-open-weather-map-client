@@ -1,5 +1,7 @@
 package io.github.mbenincasa.javaopenweathermapclient.dto.common;
 
+import java.util.Objects;
+
 public class Coord {
 
     private Double lat;
@@ -27,5 +29,17 @@ public class Coord {
                 "lat=" + lat +
                 ", lon=" + lon +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Coord coord)) return false;
+        return Objects.equals(getLat(), coord.getLat()) && Objects.equals(getLon(), coord.getLon());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getLat(), getLon());
     }
 }

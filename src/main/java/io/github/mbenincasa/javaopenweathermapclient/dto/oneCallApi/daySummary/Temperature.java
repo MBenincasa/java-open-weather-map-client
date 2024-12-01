@@ -1,5 +1,7 @@
 package io.github.mbenincasa.javaopenweathermapclient.dto.oneCallApi.daySummary;
 
+import java.util.Objects;
+
 public class Temperature {
 
     private Double min;
@@ -55,5 +57,17 @@ public class Temperature {
                 ", evening=" + evening +
                 ", morning=" + morning +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Temperature that)) return false;
+        return Objects.equals(getMin(), that.getMin()) && Objects.equals(getMax(), that.getMax()) && Objects.equals(getAfternoon(), that.getAfternoon()) && Objects.equals(getNight(), that.getNight()) && Objects.equals(getEvening(), that.getEvening()) && Objects.equals(getMorning(), that.getMorning());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getMin(), getMax(), getAfternoon(), getNight(), getEvening(), getMorning());
     }
 }

@@ -6,6 +6,7 @@ import io.github.mbenincasa.javaopenweathermapclient.dto.currentWeather.Snow;
 import io.github.mbenincasa.javaopenweathermapclient.dto.currentWeather.Sys;
 
 import java.util.List;
+import java.util.Objects;
 
 public class CurrentWeatherDTO {
 
@@ -125,5 +126,17 @@ public class CurrentWeatherDTO {
                 ", name='" + name + '\'' +
                 ", cod=" + cod +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof CurrentWeatherDTO that)) return false;
+        return Objects.equals(getCoord(), that.getCoord()) && Objects.equals(getWeather(), that.getWeather()) && Objects.equals(getBase(), that.getBase()) && Objects.equals(getMain(), that.getMain()) && Objects.equals(getVisibility(), that.getVisibility()) && Objects.equals(getWind(), that.getWind()) && Objects.equals(getRain(), that.getRain()) && Objects.equals(getSnow(), that.getSnow()) && Objects.equals(getClouds(), that.getClouds()) && Objects.equals(getDt(), that.getDt()) && Objects.equals(getSys(), that.getSys()) && Objects.equals(getTimezone(), that.getTimezone()) && Objects.equals(getId(), that.getId()) && Objects.equals(getName(), that.getName()) && Objects.equals(getCod(), that.getCod());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getCoord(), getWeather(), getBase(), getMain(), getVisibility(), getWind(), getRain(), getSnow(), getClouds(), getDt(), getSys(), getTimezone(), getId(), getName(), getCod());
     }
 }

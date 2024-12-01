@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.mbenincasa.javaopenweathermapclient.dto.common.Weather;
 
 import java.util.List;
+import java.util.Objects;
 
 public class ForecastList {
 
@@ -117,5 +118,17 @@ public class ForecastList {
                 ", pop=" + pop +
                 ", rain=" + rain +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ForecastList that)) return false;
+        return Objects.equals(getDt(), that.getDt()) && Objects.equals(getSunrise(), that.getSunrise()) && Objects.equals(getSunset(), that.getSunset()) && Objects.equals(getTemp(), that.getTemp()) && Objects.equals(getFeelsLike(), that.getFeelsLike()) && Objects.equals(getPressure(), that.getPressure()) && Objects.equals(getHumidity(), that.getHumidity()) && Objects.equals(getWeather(), that.getWeather()) && Objects.equals(getSpeed(), that.getSpeed()) && Objects.equals(getDeg(), that.getDeg()) && Objects.equals(getGust(), that.getGust()) && Objects.equals(getClouds(), that.getClouds()) && Objects.equals(getPop(), that.getPop()) && Objects.equals(getRain(), that.getRain());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getDt(), getSunrise(), getSunset(), getTemp(), getFeelsLike(), getPressure(), getHumidity(), getWeather(), getSpeed(), getDeg(), getGust(), getClouds(), getPop(), getRain());
     }
 }

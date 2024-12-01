@@ -6,6 +6,7 @@ import io.github.mbenincasa.javaopenweathermapclient.dto.oneCallApi.currentAndFo
 import io.github.mbenincasa.javaopenweathermapclient.dto.oneCallApi.currentAndForecasts.Snow;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Data {
 
@@ -136,5 +137,17 @@ public class Data {
                 ", rain=" + rain +
                 ", snow=" + snow +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Data data)) return false;
+        return Objects.equals(getDt(), data.getDt()) && Objects.equals(getSunrise(), data.getSunrise()) && Objects.equals(getSunset(), data.getSunset()) && Objects.equals(getTemp(), data.getTemp()) && Objects.equals(getFeelsLike(), data.getFeelsLike()) && Objects.equals(getPressure(), data.getPressure()) && Objects.equals(getHumidity(), data.getHumidity()) && Objects.equals(getDewPoint(), data.getDewPoint()) && Objects.equals(getUvi(), data.getUvi()) && Objects.equals(getClouds(), data.getClouds()) && Objects.equals(getVisibility(), data.getVisibility()) && Objects.equals(getWindSpeed(), data.getWindSpeed()) && Objects.equals(getWindDeg(), data.getWindDeg()) && Objects.equals(getWeather(), data.getWeather()) && Objects.equals(getRain(), data.getRain()) && Objects.equals(getSnow(), data.getSnow());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getDt(), getSunrise(), getSunset(), getTemp(), getFeelsLike(), getPressure(), getHumidity(), getDewPoint(), getUvi(), getClouds(), getVisibility(), getWindSpeed(), getWindDeg(), getWeather(), getRain(), getSnow());
     }
 }

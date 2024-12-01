@@ -1,5 +1,7 @@
 package io.github.mbenincasa.javaopenweathermapclient.dto;
 
+import java.util.Objects;
+
 public class GeocodingZipDTO {
 
     private String zip;
@@ -48,5 +50,17 @@ public class GeocodingZipDTO {
                 ", lon=" + lon +
                 ", country='" + country + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof GeocodingZipDTO that)) return false;
+        return Objects.equals(getZip(), that.getZip()) && Objects.equals(getName(), that.getName()) && Objects.equals(getLat(), that.getLat()) && Objects.equals(getLon(), that.getLon()) && Objects.equals(getCountry(), that.getCountry());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getZip(), getName(), getLat(), getLon(), getCountry());
     }
 }

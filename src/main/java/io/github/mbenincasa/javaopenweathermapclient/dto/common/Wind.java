@@ -1,5 +1,7 @@
 package io.github.mbenincasa.javaopenweathermapclient.dto.common;
 
+import java.util.Objects;
+
 public class Wind {
 
     private Double speed;
@@ -34,5 +36,17 @@ public class Wind {
                 ", deg=" + deg +
                 ", gust=" + gust +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Wind wind)) return false;
+        return Objects.equals(getSpeed(), wind.getSpeed()) && Objects.equals(getDeg(), wind.getDeg()) && Objects.equals(getGust(), wind.getGust());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getSpeed(), getDeg(), getGust());
     }
 }

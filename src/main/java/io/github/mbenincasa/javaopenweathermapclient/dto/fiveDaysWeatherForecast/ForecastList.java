@@ -7,6 +7,7 @@ import io.github.mbenincasa.javaopenweathermapclient.dto.common.Weather;
 import io.github.mbenincasa.javaopenweathermapclient.dto.common.Wind;
 
 import java.util.List;
+import java.util.Objects;
 
 public class ForecastList {
 
@@ -99,5 +100,17 @@ public class ForecastList {
                 ", sys=" + sys +
                 ", dtTxt='" + dtTxt + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ForecastList that)) return false;
+        return Objects.equals(getDt(), that.getDt()) && Objects.equals(getMain(), that.getMain()) && Objects.equals(getWeather(), that.getWeather()) && Objects.equals(getClouds(), that.getClouds()) && Objects.equals(getWind(), that.getWind()) && Objects.equals(getVisibility(), that.getVisibility()) && Objects.equals(getPop(), that.getPop()) && Objects.equals(getRain(), that.getRain()) && Objects.equals(getSnow(), that.getSnow()) && Objects.equals(getSys(), that.getSys()) && Objects.equals(getDtTxt(), that.getDtTxt());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getDt(), getMain(), getWeather(), getClouds(), getWind(), getVisibility(), getPop(), getRain(), getSnow(), getSys(), getDtTxt());
     }
 }

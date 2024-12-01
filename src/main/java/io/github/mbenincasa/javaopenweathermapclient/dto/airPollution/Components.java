@@ -2,6 +2,8 @@ package io.github.mbenincasa.javaopenweathermapclient.dto.airPollution;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.Objects;
+
 public class Components {
 
     private Double co;
@@ -72,5 +74,17 @@ public class Components {
                 ", pm10=" + pm10 +
                 ", nh3=" + nh3 +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Components that)) return false;
+        return Objects.equals(getCo(), that.getCo()) && Objects.equals(getNo(), that.getNo()) && Objects.equals(getNo2(), that.getNo2()) && Objects.equals(getO3(), that.getO3()) && Objects.equals(getSo2(), that.getSo2()) && Objects.equals(getPm25(), that.getPm25()) && Objects.equals(getPm10(), that.getPm10()) && Objects.equals(getNh3(), that.getNh3());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getCo(), getNo(), getNo2(), getO3(), getSo2(), getPm25(), getPm10(), getNh3());
     }
 }
