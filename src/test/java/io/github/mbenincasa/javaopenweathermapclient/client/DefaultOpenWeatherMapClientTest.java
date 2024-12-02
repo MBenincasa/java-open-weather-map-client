@@ -484,6 +484,16 @@ public class DefaultOpenWeatherMapClientTest {
     }
 
     @Test
+    public void testGlobalPrecipitationMap() throws RestClientException {
+        var response = openWeatherMapClient.globalPrecipitationMap()
+                .radar(1600781400, 13, 24, 6)
+                .response();
+
+        assertNotNull(response);
+        assertTrue(response.length > 0);
+    }
+
+    @Test
     public void testRequestUnauthorized() {
         var requestBuilder = openWeatherMapClientUnauthorized.currentWeather()
                 .coordinates(45.5101617, 9.0894415)

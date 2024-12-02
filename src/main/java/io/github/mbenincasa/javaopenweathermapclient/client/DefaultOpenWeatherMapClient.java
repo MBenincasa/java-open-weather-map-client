@@ -11,6 +11,7 @@ import io.github.mbenincasa.javaopenweathermapclient.request.weatherForecast.Fiv
 import io.github.mbenincasa.javaopenweathermapclient.request.weatherForecast.HourlyWeatherForecastRequest;
 import io.github.mbenincasa.javaopenweathermapclient.request.weatherMaps.AdvancedWeatherMapRequest;
 import io.github.mbenincasa.javaopenweathermapclient.request.weatherMaps.BasicWeatherMapRequest;
+import io.github.mbenincasa.javaopenweathermapclient.request.weatherMaps.GlobalPrecipitationMapRequest;
 
 public class DefaultOpenWeatherMapClient implements OpenWeatherMapClient {
 
@@ -73,5 +74,10 @@ public class DefaultOpenWeatherMapClient implements OpenWeatherMapClient {
     @Override
     public BulkDownloadRequest bulk() {
         return new BulkDownloadRequest(this.apiKey);
+    }
+
+    @Override
+    public GlobalPrecipitationMapRequest globalPrecipitationMap() {
+        return new GlobalPrecipitationMapRequest(this.apiKey);
     }
 }

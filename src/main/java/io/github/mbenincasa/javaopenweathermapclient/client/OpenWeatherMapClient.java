@@ -11,6 +11,7 @@ import io.github.mbenincasa.javaopenweathermapclient.request.weatherForecast.Fiv
 import io.github.mbenincasa.javaopenweathermapclient.request.weatherForecast.HourlyWeatherForecastRequest;
 import io.github.mbenincasa.javaopenweathermapclient.request.weatherMaps.AdvancedWeatherMapRequest;
 import io.github.mbenincasa.javaopenweathermapclient.request.weatherMaps.BasicWeatherMapRequest;
+import io.github.mbenincasa.javaopenweathermapclient.request.weatherMaps.GlobalPrecipitationMapRequest;
 
 public interface OpenWeatherMapClient {
 
@@ -35,4 +36,6 @@ public interface OpenWeatherMapClient {
     OneCallApiRequest oneCallApi();
 
     BulkDownloadRequest bulk();
+
+    GlobalPrecipitationMapRequest globalPrecipitationMap();
 }
