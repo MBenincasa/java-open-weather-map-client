@@ -1,6 +1,6 @@
 package io.github.mbenincasa.javaopenweathermapclient.request.airPollution;
 
-import io.github.mbenincasa.javaopenweathermapclient.dto.AirPollutionDTO;
+import io.github.mbenincasa.javaopenweathermapclient.dto.response.AirPollutionDTO;
 import io.github.mbenincasa.javaopenweathermapclient.utils.HttpRequestExecutor;
 import io.github.mbenincasa.javarestclient.exception.RestClientException;
 

@@ -5,6 +5,7 @@ import io.github.mbenincasa.javaopenweathermapclient.request.bulkDownload.BulkDo
 import io.github.mbenincasa.javaopenweathermapclient.request.currentWeather.CurrentWeatherRequest;
 import io.github.mbenincasa.javaopenweathermapclient.request.geocoding.GeocodingRequest;
 import io.github.mbenincasa.javaopenweathermapclient.request.oneCallApi.OneCallApiRequest;
+import io.github.mbenincasa.javaopenweathermapclient.request.roadRisk.RoadRiskRequest;
 import io.github.mbenincasa.javaopenweathermapclient.request.weatherForecast.ClimaticWeatherForecastRequest;
 import io.github.mbenincasa.javaopenweathermapclient.request.weatherForecast.DailyWeatherForecastRequest;
 import io.github.mbenincasa.javaopenweathermapclient.request.weatherForecast.FiveDaysWeatherForecastRequest;
@@ -38,4 +39,6 @@ public interface OpenWeatherMapClient {
     BulkDownloadRequest bulk();
 
     GlobalPrecipitationMapRequest globalPrecipitationMap();
+
+    RoadRiskRequest roadRisk();
 }

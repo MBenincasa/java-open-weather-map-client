@@ -1,6 +1,5 @@
 package io.github.mbenincasa.javaopenweathermapclient.utils;
 
-import io.github.mbenincasa.javaopenweathermapclient.dto.error.ResponseError;
 import io.github.mbenincasa.javaopenweathermapclient.exception.OpenWeatherMapException;
 import io.github.mbenincasa.javarestclient.client.DefaultRestClient;
 import io.github.mbenincasa.javarestclient.client.RestClient;
@@ -22,6 +21,16 @@ public class HttpRequestExecutor {
 
         handleErrorRequest(responseSpec);
         return responseSpec.getBody(responseType);
+    }
+
+    public static <T, R> List<T> executePostList(String baseUrl, Map<String, Object> query, R bodyRequest, Class<T> responseType) throws RestClientException {
+        var responseSpec = restClient.post()
+                .uri(buildUri(baseUrl, query, Map.of()).build())
+                .body(bodyRequest)
+                .retrieve();
+
+        handleErrorRequest(responseSpec);
+        return responseSpec.getBodyAsList(responseType);
     }
 
     public static <T> List<T> executeGetList(String baseUrl, Map<String, Object> query, Class<T> responseType) throws RestClientException {
@@ -61,8 +70,8 @@ public class HttpRequestExecutor {
             throw new OpenWeatherMapException("Surpassing the limit of your subscription");
 
         if (responseStatus.equals(HttpStatus.BAD_REQUEST) || responseStatus.equals(HttpStatus.NOT_FOUND)) {
-            var responseError = responseSpec.getBody(ResponseError.class);
-            throw new OpenWeatherMapException(responseError.getMessage());
+            var responseError = responseSpec.getBodyAsString();
+            throw new OpenWeatherMapException(responseError);
         }
 
         if (responseStatus.getValue() >= 500)

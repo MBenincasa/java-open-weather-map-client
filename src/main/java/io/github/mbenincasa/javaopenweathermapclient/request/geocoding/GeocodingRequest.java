@@ -1,7 +1,7 @@
 package io.github.mbenincasa.javaopenweathermapclient.request.geocoding;
 
-import io.github.mbenincasa.javaopenweathermapclient.dto.GeocodingLocationDTO;
-import io.github.mbenincasa.javaopenweathermapclient.dto.GeocodingZipDTO;
+import io.github.mbenincasa.javaopenweathermapclient.dto.response.GeocodingLocationDTO;
+import io.github.mbenincasa.javaopenweathermapclient.dto.response.GeocodingZipDTO;
 import io.github.mbenincasa.javaopenweathermapclient.utils.HttpRequestExecutor;
 import io.github.mbenincasa.javarestclient.exception.RestClientException;
 

@@ -1,9 +1,9 @@
 package io.github.mbenincasa.javaopenweathermapclient.request.oneCallApi;
 
-import io.github.mbenincasa.javaopenweathermapclient.dto.OneCallApiCurrentAndForecastsDataDTO;
-import io.github.mbenincasa.javaopenweathermapclient.dto.OneCallApiDaySummaryDTO;
-import io.github.mbenincasa.javaopenweathermapclient.dto.OneCallApiOverviewDTO;
-import io.github.mbenincasa.javaopenweathermapclient.dto.OneCallApiTimemachineDTO;
+import io.github.mbenincasa.javaopenweathermapclient.dto.response.OneCallApiCurrentAndForecastsDataDTO;
+import io.github.mbenincasa.javaopenweathermapclient.dto.response.OneCallApiDaySummaryDTO;
+import io.github.mbenincasa.javaopenweathermapclient.dto.response.OneCallApiOverviewDTO;
+import io.github.mbenincasa.javaopenweathermapclient.dto.response.OneCallApiTimemachineDTO;
 import io.github.mbenincasa.javaopenweathermapclient.request.common.Lang;
 import io.github.mbenincasa.javaopenweathermapclient.request.common.Unit;
 import io.github.mbenincasa.javaopenweathermapclient.utils.HttpRequestExecutor;
