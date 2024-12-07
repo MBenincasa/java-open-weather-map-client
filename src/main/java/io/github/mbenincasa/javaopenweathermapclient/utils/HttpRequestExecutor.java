@@ -4,7 +4,6 @@ import io.github.mbenincasa.javaopenweathermapclient.exception.OpenWeatherMapExc
 import io.github.mbenincasa.javarestclient.client.DefaultRestClient;
 import io.github.mbenincasa.javarestclient.client.RestClient;
 import io.github.mbenincasa.javarestclient.exception.RestClientException;
-import io.github.mbenincasa.javarestclient.http.HttpStatus;
 import io.github.mbenincasa.javarestclient.support.UriBuilder;
 
 import java.util.List;
@@ -63,13 +62,7 @@ public class HttpRequestExecutor {
     private static void handleErrorRequest(RestClient.RestClientResponseSpec responseSpec) throws RestClientException {
         var responseStatus = responseSpec.getStatus();
 
-        if (responseStatus.equals(HttpStatus.UNAUTHORIZED))
-            throw new OpenWeatherMapException("Invalid API key");
-
-        if (responseStatus.equals(HttpStatus.TOO_MANY_REQUESTS))
-            throw new OpenWeatherMapException("Surpassing the limit of your subscription");
-
-        if (responseStatus.equals(HttpStatus.BAD_REQUEST) || responseStatus.equals(HttpStatus.NOT_FOUND)) {
+        if (responseStatus.getValue() >= 400 && responseStatus.getValue() < 500) {
             var responseError = responseSpec.getBodyAsString();
             throw new OpenWeatherMapException(responseError);
         }
