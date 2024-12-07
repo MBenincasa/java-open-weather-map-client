@@ -35,7 +35,7 @@ public class GlobalPrecipitationMapRequest {
         }
 
         public byte[] response() throws RestClientException {
-            return HttpRequestExecutor.executeRaw(
+            return HttpRequestExecutor.executeGetRaw(
                     "https://maps.openweathermap.org/maps/2.0/radar/{z}/{x}/{y}",
                     this.query,
                     this.pathVar

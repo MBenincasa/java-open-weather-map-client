@@ -32,7 +32,7 @@ public class BulkDownloadRequest {
         }
 
         public byte[] response() throws RestClientException {
-            return HttpRequestExecutor.executeRaw(
+            return HttpRequestExecutor.executeGetRaw(
                     "https://bulk.openweathermap.org/snapshot/{bulk_file_name}",
                     this.query,
                     this.pathVar

@@ -47,7 +47,7 @@ public class GeocodingRequest {
         }
 
         public List<GeocodingLocationDTO> response() throws RestClientException {
-            return HttpRequestExecutor.executeList(
+            return HttpRequestExecutor.executeGetList(
                     "http://api.openweathermap.org/geo/1.0/direct",
                     this.query,
                     GeocodingLocationDTO.class
@@ -69,7 +69,7 @@ public class GeocodingRequest {
         }
 
         public GeocodingZipDTO response() throws RestClientException {
-            return HttpRequestExecutor.execute(
+            return HttpRequestExecutor.executeGetSingle(
                     "http://api.openweathermap.org/geo/1.0/zip",
                     this.query,
                     GeocodingZipDTO.class

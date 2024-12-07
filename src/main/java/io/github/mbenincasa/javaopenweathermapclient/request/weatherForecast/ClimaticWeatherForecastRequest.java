@@ -87,7 +87,7 @@ public class ClimaticWeatherForecastRequest {
         }
 
         public ClimaticWeatherForecastDTO response() throws RestClientException {
-            return HttpRequestExecutor.execute(
+            return HttpRequestExecutor.executeGetSingle(
                     "https://pro.openweathermap.org/data/2.5/forecast/climate",
                     this.query,
                     ClimaticWeatherForecastDTO.class

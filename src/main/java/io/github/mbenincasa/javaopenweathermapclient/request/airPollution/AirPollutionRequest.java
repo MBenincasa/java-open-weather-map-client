@@ -50,7 +50,7 @@ public class AirPollutionRequest {
         }
 
         public AirPollutionDTO response() throws RestClientException {
-            return HttpRequestExecutor.execute(
+            return HttpRequestExecutor.executeGetSingle(
                     "https://api.openweathermap.org/data/2.5/air_pollution",
                     this.query,
                     AirPollutionDTO.class
@@ -81,7 +81,7 @@ public class AirPollutionRequest {
         }
 
         public AirPollutionDTO response() throws RestClientException {
-            return HttpRequestExecutor.execute(
+            return HttpRequestExecutor.executeGetSingle(
                     "https://api.openweathermap.org/data/2.5/air_pollution/forecast",
                     this.query,
                     AirPollutionDTO.class
@@ -114,7 +114,7 @@ public class AirPollutionRequest {
         }
 
         public AirPollutionDTO response() throws RestClientException {
-            return HttpRequestExecutor.execute(
+            return HttpRequestExecutor.executeGetSingle(
                     "https://api.openweathermap.org/data/2.5/air_pollution/history",
                     this.query,
                     AirPollutionDTO.class

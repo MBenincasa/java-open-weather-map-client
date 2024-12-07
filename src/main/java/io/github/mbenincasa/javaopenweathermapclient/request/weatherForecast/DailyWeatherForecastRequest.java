@@ -87,7 +87,7 @@ public class DailyWeatherForecastRequest {
         }
 
         public DailyWeatherForecastDTO response() throws RestClientException {
-            return HttpRequestExecutor.execute(
+            return HttpRequestExecutor.executeGetSingle(
                     "https://api.openweathermap.org/data/2.5/forecast/daily",
                     this.query,
                     DailyWeatherForecastDTO.class

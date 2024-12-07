@@ -15,7 +15,7 @@ public class HttpRequestExecutor {
 
     private static final RestClient restClient = new DefaultRestClient();
 
-    public static <T> T execute(String baseUrl, Map<String, Object> query, Class<T> responseType) throws RestClientException {
+    public static <T> T executeGetSingle(String baseUrl, Map<String, Object> query, Class<T> responseType) throws RestClientException {
         var responseSpec = restClient.get()
                 .uri(buildUri(baseUrl, query, Map.of()).build())
                 .retrieve();
@@ -24,7 +24,7 @@ public class HttpRequestExecutor {
         return responseSpec.getBody(responseType);
     }
 
-    public static <T> List<T> executeList(String baseUrl, Map<String, Object> query, Class<T> responseType) throws RestClientException {
+    public static <T> List<T> executeGetList(String baseUrl, Map<String, Object> query, Class<T> responseType) throws RestClientException {
         var responseSpec = restClient.get()
                 .uri(buildUri(baseUrl, query, Map.of()).build())
                 .retrieve();
@@ -33,7 +33,7 @@ public class HttpRequestExecutor {
         return responseSpec.getBodyAsList(responseType);
     }
 
-    public static byte[] executeRaw(String baseUrl, Map<String, Object> query, Map<String, Object> pathVar) throws RestClientException {
+    public static byte[] executeGetRaw(String baseUrl, Map<String, Object> query, Map<String, Object> pathVar) throws RestClientException {
         var responseSpec = restClient.get()
                 .uri(buildUri(baseUrl, query, pathVar).build())
                 .retrieve();
