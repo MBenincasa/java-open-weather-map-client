@@ -1,5 +1,7 @@
 package io.github.mbenincasa.javaopenweathermapclient.client;
 
+import io.github.mbenincasa.javaopenweathermapclient.dto.request.RoadRiskRequestDTO;
+import io.github.mbenincasa.javaopenweathermapclient.dto.request.roadRisk.Track;
 import io.github.mbenincasa.javaopenweathermapclient.exception.OpenWeatherMapException;
 import io.github.mbenincasa.javaopenweathermapclient.request.common.Lang;
 import io.github.mbenincasa.javaopenweathermapclient.request.common.Unit;
@@ -471,6 +473,49 @@ public class DefaultOpenWeatherMapClientTest {
 
         assertNotNull(response);
         assertNotNull(response.getWeatherOverview());
+    }
+
+    @Test
+    public void testBulkDownload() throws RestClientException {
+        var response = openWeatherMapClient.bulk()
+                .download("weather_16.json.gz")
+                .response();
+
+        assertNotNull(response);
+        assertTrue(response.length > 0);
+    }
+
+    @Test
+    public void testGlobalPrecipitationMap() throws RestClientException {
+        var response = openWeatherMapClient.globalPrecipitationMap()
+                .radar(1600781400, 13, 24, 6)
+                .response();
+
+        assertNotNull(response);
+        assertTrue(response.length > 0);
+    }
+
+    @Test
+    public void testRoadRisk() throws RestClientException {
+        var request = RoadRiskRequestDTO.builder()
+                .addTrack(Track.builder()
+                        .lat(30.680439786468128)
+                        .lon(-88.81896972656251)
+                        .dt(1602702000)
+                        .build())
+                .addTrack(Track.builder()
+                        .lat(30.56699087315334)
+                        .lon(-89.44519042968751)
+                        .dt(1602702000)
+                        .build())
+                .build();
+        var response = openWeatherMapClient.roadRisk()
+                .track(request)
+                .response();
+
+        assertNotNull(response);
+        assertFalse(response.isEmpty());
+        assertEquals(1602702000, response.get(0).getDt());
     }
 
     @Test

@@ -1,6 +1,6 @@
 package io.github.mbenincasa.javaopenweathermapclient.request.airPollution;
 
-import io.github.mbenincasa.javaopenweathermapclient.dto.AirPollutionDTO;
+import io.github.mbenincasa.javaopenweathermapclient.dto.response.AirPollutionDTO;
 import io.github.mbenincasa.javaopenweathermapclient.utils.HttpRequestExecutor;
 import io.github.mbenincasa.javarestclient.exception.RestClientException;
 
@@ -50,7 +50,7 @@ public class AirPollutionRequest {
         }
 
         public AirPollutionDTO response() throws RestClientException {
-            return HttpRequestExecutor.execute(
+            return HttpRequestExecutor.executeGetSingle(
                     "https://api.openweathermap.org/data/2.5/air_pollution",
                     this.query,
                     AirPollutionDTO.class
@@ -81,7 +81,7 @@ public class AirPollutionRequest {
         }
 
         public AirPollutionDTO response() throws RestClientException {
-            return HttpRequestExecutor.execute(
+            return HttpRequestExecutor.executeGetSingle(
                     "https://api.openweathermap.org/data/2.5/air_pollution/forecast",
                     this.query,
                     AirPollutionDTO.class
@@ -114,7 +114,7 @@ public class AirPollutionRequest {
         }
 
         public AirPollutionDTO response() throws RestClientException {
-            return HttpRequestExecutor.execute(
+            return HttpRequestExecutor.executeGetSingle(
                     "https://api.openweathermap.org/data/2.5/air_pollution/history",
                     this.query,
                     AirPollutionDTO.class

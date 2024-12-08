@@ -1,31 +1,30 @@
 # Release 0.5.0
 
 ## Table of Contents
-1. [Overview](#overview)
-2. [Features](#features)
-3. [OpenWeatherMapClient](#openweathermapclient)
-4. [Usage](#usage)
-   1. [Setting Up the Client](#setting-up-the-client)
-   2. [One Call API 3.0](#one-call-api-30)
-   3. [Current Weather](#current-weather)
-   4. [3-Hour 5-Day Weather Forecast](#3-hour-5-day-weather-forecast)
-   5. [Hourly 4-Day Forecast](#hourly-4-day-weather-forecast)
-   6. [Daily 16-Day Weather Forecast](#daily-16-day-weather-forecast)
-   7. [Climatic 30-Day Weather Forecast](#climatic-30-day-weather-forecast)
-   8. [Air Pollution](#air-pollution)
-   9. [Geocoding](#geocoding)
-   10. [Basic weather maps](#basic-weather-maps)
-   11. [Advanced weather maps](#advanced-weather-maps)
+1. [Overview](#1-overview)
+2. [Features](#2-features)
+3. [OpenWeatherMapClient](#3-openweathermapclient)
+4. [Usage](#4-usage)
+   1. [Setting Up the Client](#41-setting-up-the-client)
+   2. [One Call API 3.0](#42-one-call-api-30)
+   3. [Current Weather](#43-current-weather)
+   4. [3-Hour 5-Day Weather Forecast](#44-3-hour-5-day-weather-forecast)
+   5. [Hourly 4-Day Forecast](#45-hourly-4-day-weather-forecast)
+   6. [Daily 16-Day Weather Forecast](#46-daily-16-day-weather-forecast)
+   7. [Climatic 30-Day Weather Forecast](#47-climatic-30-day-weather-forecast)
+   8. [Air Pollution](#48-air-pollution)
+   9. [Geocoding](#49-geocoding)
+   10. [Basic weather maps](#410-basic-weather-maps)
 
 ## 1. Overview
 Version `0.5.0` introduces **One Call API 3.0**, a comprehensive solution for retrieving essential weather data. This update allows users to access both **short-term** and **long-term forecasts**, along with **aggregated weather data**. With this new addition, the library expands its capabilities to provide a more complete weather data experience.
 
 ## 2. Features
 - **One Call API 3.0**
-    - Current and forecasts weather data
-    - Weather data for timestamp
-    - Daily Aggregation
-    - Weather overview
+  - Current and forecasts weather data
+  - Weather data for timestamp
+  - Daily Aggregation
+  - Weather overview
 - **Current & Forecast weather data collection**
   - Current Weather
   - 3-hour Forecast (5 days)
@@ -33,12 +32,12 @@ Version `0.5.0` introduces **One Call API 3.0**, a comprehensive solution for re
   - Daily Forecast (16 days)
   - Climatic Forecast (30 days)
 - **Maps collection**
-    - Basic weather maps
-    - Advanced weather maps
-    - Historical maps
+  - Basic weather maps
+  - Advanced weather maps
+  - Historical maps
 - **Other weather API's collection**
-    - Air Pollution API
-    - Geocoding API
+  - Air Pollution API
+  - Geocoding API
 
 ## 3. OpenWeatherMapClient
 The `OpenWeatherMapClient` interface provides methods to access various weather-related services through the OpenWeatherMap API. Each method returns a request builder for different types of data, such as current weather, forecasts, air pollution, and geocoding.

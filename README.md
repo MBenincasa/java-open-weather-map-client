@@ -29,10 +29,13 @@ The OpenWeatherMap Java Client Library is a robust and easy-to-use Java library 
   - Hourly Forecast 4 days
   - Daily Forecast 16 days
   - Climatic Forecast 30 days
+  - Bulk Download
+  - Road Risk API
 - **Maps collection**
   - Basic weather maps
   - Advanced weather maps
   - Historical maps
+  - Global Precipitation maps
 - **Other weather API's collection**
   - Air Pollution API
   - Geocoding API
@@ -46,14 +49,23 @@ Java 17 or above.
 - org.junit.platform:junit-platform-suite-engine:jar:1.11.3
 
 ## Maven Dependency
-To include this library in your Maven project, add the following dependency to your `pom.xml`:
+Currently, the library is hosted on GitHub Packages. To include this library in your Maven project, add the following dependency and repository to your `pom.xml`:
 
 ```xml
 <dependency>
   <groupId>io.github.mbenincasa</groupId>
   <artifactId>java-open-weather-map-client</artifactId>
-  <version>0.5.0</version>
+  <version>0.6.0</version>
 </dependency>
+```
+
+```xml
+<repositories>
+  <repository>
+    <id>github</id>
+    <url>https://maven.pkg.github.com/MBenincasa/java-open-weather-map-client</url>
+  </repository>
+</repositories>
 ```
 
 ## Documentation

@@ -1,6 +1,6 @@
 package io.github.mbenincasa.javaopenweathermapclient.request.weatherForecast;
 
-import io.github.mbenincasa.javaopenweathermapclient.dto.ClimaticWeatherForecastDTO;
+import io.github.mbenincasa.javaopenweathermapclient.dto.response.ClimaticWeatherForecastDTO;
 import io.github.mbenincasa.javaopenweathermapclient.request.common.Lang;
 import io.github.mbenincasa.javaopenweathermapclient.request.common.Unit;
 import io.github.mbenincasa.javaopenweathermapclient.utils.HttpRequestExecutor;
@@ -87,7 +87,7 @@ public class ClimaticWeatherForecastRequest {
         }
 
         public ClimaticWeatherForecastDTO response() throws RestClientException {
-            return HttpRequestExecutor.execute(
+            return HttpRequestExecutor.executeGetSingle(
                     "https://pro.openweathermap.org/data/2.5/forecast/climate",
                     this.query,
                     ClimaticWeatherForecastDTO.class

@@ -2,6 +2,19 @@
 
 All significant changes to this project will be documented in this file.
 
+## [0.6.0] - 2024-12-08
+
+### Added
+- **Bulk Download**: Get current weather, weather forecasts and their 7-day archives in JSON or CSV format.
+- **Road Risk API**: Provides weather data and national alerts at the point of destination and along a route.
+- **Global Precipitation maps**: Get current and historical global precipitation weather maps.
+
+### Changed
+- All DTOs now include properly implemented `equals()` and `hashCode()` methods.
+- Reorganized the `dto` package into separate sub-packages for **request** and **response** types to improve structure and maintainability.
+- When an `OpenWeatherMapException` is thrown for 4xx errors, the entire response body is now included in the exception message for better debugging and clarity.
+- Renamed the services for making requests in `HttpRequestExecutor` to improve clarity and consistency.
+
 ## [0.5.0] - 2024-11-24
 
 ### Added

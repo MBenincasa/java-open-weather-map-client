@@ -35,7 +35,7 @@ public class BasicWeatherMapRequest {
         }
 
         public byte[] response() throws RestClientException {
-            return HttpRequestExecutor.executeRaw(
+            return HttpRequestExecutor.executeGetRaw(
                     "https://tile.openweathermap.org/map/{layer}/{z}/{x}/{y}.png",
                     this.query,
                     this.pathVar

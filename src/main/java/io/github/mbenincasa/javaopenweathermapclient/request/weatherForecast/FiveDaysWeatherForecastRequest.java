@@ -1,6 +1,6 @@
 package io.github.mbenincasa.javaopenweathermapclient.request.weatherForecast;
 
-import io.github.mbenincasa.javaopenweathermapclient.dto.FiveDaysWeatherForecastDTO;
+import io.github.mbenincasa.javaopenweathermapclient.dto.response.FiveDaysWeatherForecastDTO;
 import io.github.mbenincasa.javaopenweathermapclient.request.common.Lang;
 import io.github.mbenincasa.javaopenweathermapclient.request.common.Unit;
 import io.github.mbenincasa.javaopenweathermapclient.utils.HttpRequestExecutor;
@@ -87,7 +87,7 @@ public class FiveDaysWeatherForecastRequest {
         }
 
         public FiveDaysWeatherForecastDTO response() throws RestClientException {
-            return HttpRequestExecutor.execute(
+            return HttpRequestExecutor.executeGetSingle(
                     "https://api.openweathermap.org/data/2.5/forecast",
                     this.query,
                     FiveDaysWeatherForecastDTO.class

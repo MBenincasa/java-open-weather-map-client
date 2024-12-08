@@ -1,9 +1,9 @@
 package io.github.mbenincasa.javaopenweathermapclient.request.oneCallApi;
 
-import io.github.mbenincasa.javaopenweathermapclient.dto.OneCallApiCurrentAndForecastsDataDTO;
-import io.github.mbenincasa.javaopenweathermapclient.dto.OneCallApiDaySummaryDTO;
-import io.github.mbenincasa.javaopenweathermapclient.dto.OneCallApiOverviewDTO;
-import io.github.mbenincasa.javaopenweathermapclient.dto.OneCallApiTimemachineDTO;
+import io.github.mbenincasa.javaopenweathermapclient.dto.response.OneCallApiCurrentAndForecastsDataDTO;
+import io.github.mbenincasa.javaopenweathermapclient.dto.response.OneCallApiDaySummaryDTO;
+import io.github.mbenincasa.javaopenweathermapclient.dto.response.OneCallApiOverviewDTO;
+import io.github.mbenincasa.javaopenweathermapclient.dto.response.OneCallApiTimemachineDTO;
 import io.github.mbenincasa.javaopenweathermapclient.request.common.Lang;
 import io.github.mbenincasa.javaopenweathermapclient.request.common.Unit;
 import io.github.mbenincasa.javaopenweathermapclient.utils.HttpRequestExecutor;
@@ -68,7 +68,7 @@ public class OneCallApiRequest {
         }
 
         public OneCallApiCurrentAndForecastsDataDTO response() throws RestClientException {
-            return HttpRequestExecutor.execute(
+            return HttpRequestExecutor.executeGetSingle(
                     "https://api.openweathermap.org/data/3.0/onecall",
                     this.query,
                     OneCallApiCurrentAndForecastsDataDTO.class
@@ -99,7 +99,7 @@ public class OneCallApiRequest {
         }
 
         public OneCallApiTimemachineDTO response() throws RestClientException {
-            return HttpRequestExecutor.execute(
+            return HttpRequestExecutor.executeGetSingle(
                     "https://api.openweathermap.org/data/3.0/onecall/timemachine",
                     this.query,
                     OneCallApiTimemachineDTO.class
@@ -135,7 +135,7 @@ public class OneCallApiRequest {
         }
 
         public OneCallApiDaySummaryDTO response() throws RestClientException {
-            return HttpRequestExecutor.execute(
+            return HttpRequestExecutor.executeGetSingle(
                     "https://api.openweathermap.org/data/3.0/onecall/day_summary",
                     this.query,
                     OneCallApiDaySummaryDTO.class
@@ -165,7 +165,7 @@ public class OneCallApiRequest {
         }
 
         public OneCallApiOverviewDTO response() throws RestClientException {
-            return HttpRequestExecutor.execute(
+            return HttpRequestExecutor.executeGetSingle(
                     "https://api.openweathermap.org/data/3.0/onecall/overview",
                     this.query,
                     OneCallApiOverviewDTO.class

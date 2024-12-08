@@ -65,7 +65,7 @@ public class AdvancedWeatherMapRequest {
         }
 
         public byte[] response() throws RestClientException {
-            return HttpRequestExecutor.executeRaw(
+            return HttpRequestExecutor.executeGetRaw(
                     "https://maps.openweathermap.org/maps/2.0/weather/{layer}/{z}/{x}/{y}",
                     this.query,
                     this.pathVar

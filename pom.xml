@@ -6,7 +6,7 @@
 
     <groupId>io.github.mbenincasa</groupId>
     <artifactId>java-open-weather-map-client</artifactId>
-    <version>0.5.0</version>
+    <version>0.6.0</version>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>

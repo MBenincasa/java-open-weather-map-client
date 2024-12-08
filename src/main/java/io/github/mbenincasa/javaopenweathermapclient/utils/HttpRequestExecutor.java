@@ -1,11 +1,9 @@
 package io.github.mbenincasa.javaopenweathermapclient.utils;
 
-import io.github.mbenincasa.javaopenweathermapclient.dto.error.ResponseError;
 import io.github.mbenincasa.javaopenweathermapclient.exception.OpenWeatherMapException;
 import io.github.mbenincasa.javarestclient.client.DefaultRestClient;
 import io.github.mbenincasa.javarestclient.client.RestClient;
 import io.github.mbenincasa.javarestclient.exception.RestClientException;
-import io.github.mbenincasa.javarestclient.http.HttpStatus;
 import io.github.mbenincasa.javarestclient.support.UriBuilder;
 
 import java.util.List;
@@ -15,7 +13,7 @@ public class HttpRequestExecutor {
 
     private static final RestClient restClient = new DefaultRestClient();
 
-    public static <T> T execute(String baseUrl, Map<String, Object> query, Class<T> responseType) throws RestClientException {
+    public static <T> T executeGetSingle(String baseUrl, Map<String, Object> query, Class<T> responseType) throws RestClientException {
         var responseSpec = restClient.get()
                 .uri(buildUri(baseUrl, query, Map.of()).build())
                 .retrieve();
@@ -24,7 +22,17 @@ public class HttpRequestExecutor {
         return responseSpec.getBody(responseType);
     }
 
-    public static <T> List<T> executeList(String baseUrl, Map<String, Object> query, Class<T> responseType) throws RestClientException {
+    public static <T, R> List<T> executePostList(String baseUrl, Map<String, Object> query, R bodyRequest, Class<T> responseType) throws RestClientException {
+        var responseSpec = restClient.post()
+                .uri(buildUri(baseUrl, query, Map.of()).build())
+                .body(bodyRequest)
+                .retrieve();
+
+        handleErrorRequest(responseSpec);
+        return responseSpec.getBodyAsList(responseType);
+    }
+
+    public static <T> List<T> executeGetList(String baseUrl, Map<String, Object> query, Class<T> responseType) throws RestClientException {
         var responseSpec = restClient.get()
                 .uri(buildUri(baseUrl, query, Map.of()).build())
                 .retrieve();
@@ -33,7 +41,7 @@ public class HttpRequestExecutor {
         return responseSpec.getBodyAsList(responseType);
     }
 
-    public static byte[] executeRaw(String baseUrl, Map<String, Object> query, Map<String, Object> pathVar) throws RestClientException {
+    public static byte[] executeGetRaw(String baseUrl, Map<String, Object> query, Map<String, Object> pathVar) throws RestClientException {
         var responseSpec = restClient.get()
                 .uri(buildUri(baseUrl, query, pathVar).build())
                 .retrieve();
@@ -54,15 +62,9 @@ public class HttpRequestExecutor {
     private static void handleErrorRequest(RestClient.RestClientResponseSpec responseSpec) throws RestClientException {
         var responseStatus = responseSpec.getStatus();
 
-        if (responseStatus.equals(HttpStatus.UNAUTHORIZED))
-            throw new OpenWeatherMapException("Invalid API key");
-
-        if (responseStatus.equals(HttpStatus.TOO_MANY_REQUESTS))
-            throw new OpenWeatherMapException("Surpassing the limit of your subscription");
-
-        if (responseStatus.equals(HttpStatus.BAD_REQUEST) || responseStatus.equals(HttpStatus.NOT_FOUND)) {
-            var responseError = responseSpec.getBody(ResponseError.class);
-            throw new OpenWeatherMapException(responseError.getMessage());
+        if (responseStatus.getValue() >= 400 && responseStatus.getValue() < 500) {
+            var responseError = responseSpec.getBodyAsString();
+            throw new OpenWeatherMapException(responseError);
         }
 
         if (responseStatus.getValue() >= 500)
