@@ -1,4 +1,4 @@
-# Release 0.5.0
+# Release 0.6.0
 
 ## Table of Contents
 1. [Overview](#1-overview)
@@ -15,9 +15,19 @@
    8. [Air Pollution](#48-air-pollution)
    9. [Geocoding](#49-geocoding)
    10. [Basic weather maps](#410-basic-weather-maps)
+   11. [Advanced weather maps](#411-advanced-weather-maps)
+   12. [Global Precipitation Maps](#412-global-precipitation-maps)
+   13. [Bulk Download](#413-bulk-download)
+   14. [Road Risk](#414-road-risk)
 
 ## 1. Overview
-Version `0.5.0` introduces **One Call API 3.0**, a comprehensive solution for retrieving essential weather data. This update allows users to access both **short-term** and **long-term forecasts**, along with **aggregated weather data**. With this new addition, the library expands its capabilities to provide a more complete weather data experience.
+Version `0.6.0` introduces several key features and improvements to enhance the library's functionality:
+
+- **Bulk Download**: Now supports downloading current weather, forecasts, and 7-day archives in both JSON and CSV formats.
+- **Road Risk API**: Provides weather data and national alerts for destinations and along routes, helping with travel and logistics planning.
+- **Global Precipitation Maps**: Access to current and historical global precipitation maps for a better understanding of weather patterns worldwide.
+
+Additionally, significant structural changes were made to improve code maintainability, including the reorganization of the `dto` package into separate **request** and **response** sub-packages, and enhanced error handling for 4xx responses.
 
 ## 2. Features
 - **One Call API 3.0**
@@ -31,10 +41,13 @@ Version `0.5.0` introduces **One Call API 3.0**, a comprehensive solution for re
   - Hourly Forecast (4 days)
   - Daily Forecast (16 days)
   - Climatic Forecast (30 days)
+  - Bulk Download
+  - Road Risk API
 - **Maps collection**
   - Basic weather maps
   - Advanced weather maps
   - Historical maps
+  - Global Precipitation maps
 - **Other weather API's collection**
   - Air Pollution API
   - Geocoding API
@@ -713,5 +726,76 @@ var response = openWeatherMapClient.advancedWeatherMap()
         .opacity(0.6)
         .palette("0:FF8800;10:88FF88;20:0088FF")
         .fillBound(true)
+        .response();
+```
+
+### 4.12. Global Precipitation Maps
+Get current and historical global precipitation weather maps.
+
+#### 4.12.1. Available Methods for Global Precipitation Maps
+- `radar(Integer tm, Integer x, Integer y, Integer z)`: Prepares a request to retrieve a radar precipitation map at specific tile coordinates (x, y) and zoom level (z), for a specific time (`tm`).
+    - **Parameters**:
+        - `tm`: The timestamp for the radar data (used for historical or forecast data).
+        - `x`: The x-coordinate of the map tile.
+        - `y`: The y-coordinate of the map tile.
+        - `z`: The zoom level for the map.
+- `response()`: Returns the radar map image as a byte array, suitable for rendering or saving.
+
+#### 4.12.2. Get Precipitation Radar Map
+Retrieve a radar precipitation map layer for given coordinates and zoom level, with the specified timestamp for the data.
+
+```java
+var response = openWeatherMapClient.globalPrecipitationMap()
+        .radar(1600781400, 13, 24, 6)
+        .response();
+```
+
+### 4.13. Bulk Download
+Access bulk weather data snapshots, enabling the retrieval of large datasets associated with specific bulk file names.
+
+#### 4.13.1. Available Methods for Bulk Download
+- `download(String bulkFileName)`: Prepares a request to download a bulk weather data file using the specified bulk file name.
+    - **Parameters**:
+        - `bulkFileName`: The name of the bulk data file to download.
+- `response()`: Returns the bulk data file as a byte array, suitable for rendering or saving.
+
+#### 4.13.2. Get Bulk Data File
+Retrieve a bulk weather data file by specifying the file name, allowing access to large weather datasets.
+
+```java
+var response = openWeatherMapClient.bulk()
+        .download("weather_16.json.gz")
+        .response();
+```
+
+Ecco la documentazione in formato Markdown per la classe RoadRiskRequest:
+
+### 4.14. Road Risk
+Retrieve road risk information based on weather conditions and geographical locations. This feature provides data related to potential risks for road users, such as icy conditions, heavy rain, or snowstorms.
+
+#### 4.14.1. Available Methods for Road Risk
+- `track(RoadRiskRequestDTO bodyRequest)`: Prepares a request to track road risk information based on a specific set of input parameters.
+    - **Parameters**:
+        - `bodyRequest`: An object containing the required parameters for the road risk request (e.g., location, weather conditions, etc.).
+- `response()`: Returns a list of `RoadRiskDTO` objects containing road risk information for the requested location(s).
+
+#### 4.14.2. Get Road Risk Information
+Retrieve detailed road risk data for a given location based on weather conditions.
+
+```java
+var request = RoadRiskRequestDTO.builder()
+        .addTrack(Track.builder()
+                .lat(30.680439786468128)
+                .lon(-88.81896972656251)
+                .dt(1602702000)
+                .build())
+        .addTrack(Track.builder()
+                .lat(30.56699087315334)
+                .lon(-89.44519042968751)
+                .dt(1602702000)
+                .build())
+        .build();
+var response = openWeatherMapClient.roadRisk()
+        .track(request)
         .response();
 ```

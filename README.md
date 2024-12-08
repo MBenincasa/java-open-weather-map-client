@@ -29,10 +29,13 @@ The OpenWeatherMap Java Client Library is a robust and easy-to-use Java library 
   - Hourly Forecast 4 days
   - Daily Forecast 16 days
   - Climatic Forecast 30 days
+  - Bulk Download
+  - Road Risk API
 - **Maps collection**
   - Basic weather maps
   - Advanced weather maps
   - Historical maps
+  - Global Precipitation maps
 - **Other weather API's collection**
   - Air Pollution API
   - Geocoding API
@@ -52,7 +55,7 @@ Currently, the library is hosted on GitHub Packages. To include this library in 
 <dependency>
   <groupId>io.github.mbenincasa</groupId>
   <artifactId>java-open-weather-map-client</artifactId>
-  <version>0.5.0</version>
+  <version>0.6.0</version>
 </dependency>
 ```
 
